@@ -19,7 +19,8 @@
 
             <!-- Token Permissions -->
             @if (Laravel\Jetstream\Jetstream::hasPermissions())
-                <div class="col-span-6">
+            {{-- //parth --}}
+            {{-- <div class="col-span-6">
                     <x-jet-label for="permissions" value="{{ __('Permissions') }}" />
 
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -30,7 +31,7 @@
                             </label>
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
             @endif
         </x-slot>
 
@@ -75,11 +76,12 @@
                                         </div>
                                     @endif
 
-                                    @if (Laravel\Jetstream\Jetstream::hasPermissions())
+                                    {{ $token->token }}
+                                    {{-- @if (Laravel\Jetstream\Jetstream::hasPermissions())
                                         <button class="cursor-pointer ml-6 text-sm text-gray-400 underline" wire:click="manageApiTokenPermissions({{ $token->id }})">
                                             {{ __('Permissions') }}
                                         </button>
-                                    @endif
+                                    @endif --}}
 
                                     <button class="cursor-pointer ml-6 text-sm text-red-500" wire:click="confirmApiTokenDeletion({{ $token->id }})">
                                         {{ __('Delete') }}
