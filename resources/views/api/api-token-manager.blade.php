@@ -76,7 +76,6 @@
                                         </div>
                                     @endif
 
-                                    {{ $token->token }}
                                     {{-- @if (Laravel\Jetstream\Jetstream::hasPermissions())
                                         <button class="cursor-pointer ml-6 text-sm text-gray-400 underline" wire:click="manageApiTokenPermissions({{ $token->id }})">
                                             {{ __('Permissions') }}
