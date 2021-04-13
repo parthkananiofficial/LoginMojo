@@ -71,7 +71,7 @@ class SessionTokenController extends Controller
         if($sesssionToken)
         {
             $response["session"] = $sesssionToken['session'];
-            $response["website_session"] = $session;
+            $response["website_session"] = $sesssionToken['website_session'];
             $response["mobile"] = $sesssionToken['mobile'];
             return response()->json($response);
         }
