@@ -25,10 +25,10 @@
                 <x-jet-nav-link href="{{ route('config.edit') }}" :active="request()->routeIs('config.edit')">
                     {{ __('Configuration') }}
                 </x-jet-dropdown-link>
-
+{{-- 
                 <x-jet-nav-link href="{{ route('documentation') }}" :active="request()->routeIs('documentation')">
                     {{ __('Documentation') }}
-                </x-jet-dropdown-link>
+                </x-jet-dropdown-link> --}}
             </div>
             </div>
 
@@ -166,9 +166,9 @@
                 {{ __('Configuration') }}
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{ route('documentation') }}" :active="request()->routeIs('documentation')">
+            {{-- <x-jet-responsive-nav-link href="{{ route('documentation') }}" :active="request()->routeIs('documentation')">
                 {{ __('Documentation') }}
-            </x-jet-responsive-nav-link>
+            </x-jet-responsive-nav-link> --}}
         </div>
 
         <!-- Responsive Settings Options -->

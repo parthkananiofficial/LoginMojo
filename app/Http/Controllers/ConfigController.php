@@ -10,13 +10,13 @@ class ConfigController extends Controller
 {
     public function index()
     {
-        return view('config');
+        return view('config.edit');
     }
     public function edit()
     {
         $user = Auth::user();
         $settings = $user->settings()->all();
-        return View::make('config',compact('settings'));
+        return View::make('config.edit',compact('settings'));
     }
 
     public function update(Request $request)
