@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Glorand\Model\Settings\Traits\HasSettingsField;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,6 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasSettingsField;
 
     /**
      * The attributes that are mass assignable.
@@ -57,5 +59,14 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+    ];
+
+    public $defaultSettings = [
+        'throttle' => 10,
+        'common_number' => true,
+        'valid_message_template' => 'Thank you for Login',
+        'invalid_message_template' => 'Session is Expired or not found',
+        'throttle_message_template' => 'Your daily limit reached',
+        'duplicate_session_message_template' => 'This session code is already used',
     ];
 }

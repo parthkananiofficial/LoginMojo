@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
+    Route::get('/dashboard', [DashboardController::class,"index"])->name('dashboard');
+    Route::get('/configuration/edit', [ConfigController::class,"edit"])->name('config.edit');
+    Route::post('/configuration', [ConfigController::class,"update"])->name('config.update');
+    Route::get('/documentation', [DocumentationController::class,"index"])->name('documentation');
+});

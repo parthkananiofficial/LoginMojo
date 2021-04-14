@@ -20,8 +20,15 @@
                         <x-jet-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
                         </x-jet-dropdown-link>
-
                 @endif
+
+                <x-jet-nav-link href="{{ route('config.edit') }}" :active="request()->routeIs('config.edit')">
+                    {{ __('Configuration') }}
+                </x-jet-dropdown-link>
+
+                <x-jet-nav-link href="{{ route('documentation') }}" :active="request()->routeIs('documentation')">
+                    {{ __('Documentation') }}
+                </x-jet-dropdown-link>
             </div>
             </div>
 
@@ -112,6 +119,9 @@
                                     {{ __('API Tokens') }}
                                 </x-jet-dropdown-link>
                             @endif
+                            <x-jet-dropdown-link href="{{ route('config.edit') }}">
+                                {{ __('Configuration') }}
+                            </x-jet-dropdown-link>
 
                             <div class="border-t border-gray-100"></div>
 
@@ -150,6 +160,14 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                 {{ __('API Tokens') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('config.edit') }}" :active="request()->routeIs('config.edit')">
+                {{ __('Configuration') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('documentation') }}" :active="request()->routeIs('documentation')">
+                {{ __('Documentation') }}
             </x-jet-responsive-nav-link>
         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SessionToken;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -59,7 +60,7 @@ class SessionTokenController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,$session)
+    public function show(Request $request, $session)
     {
 
         $sesssionToken = [
@@ -68,8 +69,7 @@ class SessionTokenController extends Controller
         ];
         $sesssionToken = SessionToken::where($sesssionToken)->first();
         $response = [];
-        if($sesssionToken)
-        {
+        if ($sesssionToken) {
             $response["session"] = $sesssionToken['session'];
             $response["website_session"] = $sesssionToken['website_session'];
             $response["mobile"] = $sesssionToken['mobile'];
@@ -99,24 +99,35 @@ class SessionTokenController extends Controller
     public function update(Request $request)
     {
         $input = $request->all();
-
+        $user = auth()->user();
+        $settings = $user->settings()->all();
         //TODO :: To check the mobile of the sender & receiver
-
-        $sesssionToken = SessionToken::where(
-            [
-                "user_id" => auth()->user()->id,
-                "session" => $input['message']
-            ])->first();
-
+        $sesssionToken = SessionToken::where(["session" => $input['message']])->first();
 
         $response = [];
-        if($sesssionToken)
-        {
-            $sesssionToken->update(["mobile"=>$input['mobile']]);
-            $response["reply"] = "Thanks you for Login";
-            return response()->json($response);
+        if ($sesssionToken) {
+            if($sesssionToken['mobile'] === null)
+            {
+                $throttle_pass = true;
+
+                //check throttle condition
+                if($settings['throttle'] > 0 && $this->dailyThrottleCount($input['mobile'],$sesssionToken['user_id']) > $settings['throttle'])
+                {
+                    $throttle_pass = false;
+                }
+                if($throttle_pass)
+                {
+                    $sesssionToken->update(["mobile" => $input['mobile']]);
+                    $response["reply"] = $settings['valid_message_template'];
+                }else{
+                    $response["reply"] = $settings['throttle_message_template'];
+                }
+            }else{
+                $response["reply"] = $settings['duplicate_session_message_template'];
+            }
+        }else{
+            $response["reply"] = $settings['invalid_message_template'];
         }
-        $response["reply"] = "Error";
         return response()->json($response);
     }
 
@@ -129,5 +140,12 @@ class SessionTokenController extends Controller
     public function destroy(SessionToken $sessionToken)
     {
         //
+    }
+
+    public function dailyThrottleCount($mobile,$user_id)
+    {
+       return SessionToken::where(['mobile'=>$mobile,'user_id'=>$user_id])
+                            ->where('created_at', '>=', Carbon::today())
+                            ->get()->count();
     }
 }
