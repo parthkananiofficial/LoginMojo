@@ -13,7 +13,7 @@
                       <div class="px-4 sm:px-0">
                         <h3 class="text-lg font-medium leading-6 text-gray-900">Message Template</h3>
                         <p class="mt-1 text-sm text-gray-600">
-                          Set the templates to communicate with the users.
+                          Set customized messages to respond users.
                         </p>
                       </div>
                     </div>
@@ -70,7 +70,7 @@
                             <div class="px-4 sm:px-0">
                                 <h3 class="text-lg font-medium leading-6 text-gray-900">User Restriction Settings</h3>
                                 <p class="mt-1 text-sm text-gray-600">
-                                    Decide the Application configuration based on your Usage.
+                                    Set maximum limit to login for a day per user.
                                 </p>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                             <div class="px-4 sm:px-0">
                                 <h3 class="text-lg font-medium leading-6 text-gray-900">Mobile Number Settings</h3>
                                 <p class="mt-1 text-sm text-gray-600">
-                                    Decide the Application configuration based on your Usage.
+                                    Set WhatsApp server Number to respond your users
                                 </p>
                             </div>
                         </div>
@@ -121,8 +121,7 @@
                                         <div>
                                             <legend class="text-base font-medium text-gray-900">WhatsApp Server Mobile Number
                                             </legend>
-                                            <p class="text-sm text-gray-500">Users will be send the message to this Mobile Number
-                                            </p>
+                                            <p class="text-sm text-gray-500">All messages from users’ WhatsApp will be sent to this number</p>
                                         </div>
                                         <div class="mt-4 space-y-4">
                                             <div class="flex items-center">
