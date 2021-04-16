@@ -86,26 +86,7 @@
           navbarCollapse.classList.remove('show')
         })
       );
-      navbarToggler.addEventListener('click', function () {
-        navbarToggler.classList.toggle("active");
-        navbarCollapse.classList.toggle('show')
-      })
-
-
-    //======== tiny slider for testimonial
-    tns({
-      container: '.testimonials',
-      items: 1,
-      slideBy: 'page',
-      autoplay: false,
-      mouseDrag: true,
-      gutter: 0,
-      nav: false,
-      controls: false,
-    });
-
-   
-
+      
       //WOW Scroll Spy
       var wow = new WOW({
         //disabled for mobile
