@@ -474,7 +474,7 @@
                   <i class="lni lni-envelope"></i>
                 </div>
                 <p class="pl-3">
-                  <a href="#" class="block">contact@versionhash.com</a>
+                  <a href="#" class="block">info@versionhash.com</a>
                 </p>
               </div>
               <div class="flex flex-wrap mb-6 items-center">
