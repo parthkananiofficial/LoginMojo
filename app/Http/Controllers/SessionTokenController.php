@@ -242,11 +242,16 @@ class SessionTokenController extends Controller
         $emoji_to_string["🦔"] = "7";
         $emoji_to_string["🦕"] = "8";
         $emoji_to_string["🦖"] = "9";
-        $string = "";
         $chrArray = preg_split('//u', $emojis, -1, PREG_SPLIT_NO_EMPTY);
 
+        $string = "";
         for ($i = 0; $i < sizeof($chrArray); $i++) {
-            $string .= $emoji_to_string[$chrArray[$i]];
+            if(isset($emoji_to_string[$chrArray[$i]]))
+            {
+                $string .= $emoji_to_string[$chrArray[$i]];
+            }else{
+                $string .= $chrArray[$i];
+            }
         }
         return $string;
     }
