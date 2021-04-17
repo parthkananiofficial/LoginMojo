@@ -47,9 +47,9 @@ class SessionTokenController extends Controller
         ];
         $sesssionToken = SessionToken::create($sesssionToken);
 
-        $user_message = $this->uuid_to_emoji((string) $sesssionToken->session);
+        $user_message = $this->uuid_to_emoji((string) $sesssionToken->token);
         $response = [
-            "token" => $sesssionToken->session,
+            "token" => $sesssionToken->token,
             "website_session" => $sesssionToken->website_session,
             "message" => $user_message,
         ];
