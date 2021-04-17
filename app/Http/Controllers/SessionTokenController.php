@@ -47,9 +47,11 @@ class SessionTokenController extends Controller
         ];
         $sesssionToken = SessionToken::create($sesssionToken);
 
+        $user_message = $this->uuid_to_emoji((string) $sesssionToken->session);
         $response = [
-            "session" => $sesssionToken->session,
+            "token" => $sesssionToken->session,
             "website_session" => $sesssionToken->website_session,
+            "message" => $user_message,
         ];
         return response()->json($response);
     }
@@ -101,31 +103,29 @@ class SessionTokenController extends Controller
         $input = $request->all();
         $user = auth()->user();
         $settings = $user->settings()->all();
-        //TODO :: To check the mobile of the sender & receiver
-        $sesssionToken = SessionToken::where(["session" => $input['message']])->first();
+
+        $recipient_message = $this->deduce_message($input['message']);
+        $sesssionToken = SessionToken::where(["session" => $recipient_message])->first();
 
         $response = [];
         if ($sesssionToken) {
-            if($sesssionToken['mobile'] === null)
-            {
+            if ($sesssionToken['mobile'] === null) {
                 $throttle_pass = true;
 
                 //check throttle condition
-                if($settings['throttle'] > 0 && $this->dailyThrottleCount($input['mobile'],$sesssionToken['user_id']) > $settings['throttle'])
-                {
+                if ($settings['throttle'] > 0 && $this->dailyThrottleCount($input['mobile'], $sesssionToken['user_id']) > $settings['throttle']) {
                     $throttle_pass = false;
                 }
-                if($throttle_pass)
-                {
+                if ($throttle_pass) {
                     $sesssionToken->update(["mobile" => $input['mobile']]);
                     $response["reply"] = $settings['valid_message_template'];
-                }else{
+                } else {
                     $response["reply"] = $settings['throttle_message_template'];
                 }
-            }else{
+            } else {
                 $response["reply"] = $settings['duplicate_session_message_template'];
             }
-        }else{
+        } else {
             $response["reply"] = $settings['invalid_message_template'];
         }
         return response()->json($response);
@@ -142,10 +142,110 @@ class SessionTokenController extends Controller
         //
     }
 
-    public function dailyThrottleCount($mobile,$user_id)
+    public function dailyThrottleCount($mobile, $user_id)
     {
-       return SessionToken::where(['mobile'=>$mobile,'user_id'=>$user_id])
-                            ->where('created_at', '>=', Carbon::today())
-                            ->get()->count();
+        return SessionToken::where(['mobile' => $mobile, 'user_id' => $user_id])
+            ->where('created_at', '>=', Carbon::today())
+            ->get()->count();
+    }
+
+
+    public function deduce_message($message)
+    {
+        //TODO :: Deduce the message using Regex or some other tricks
+        return $this->emoji_to_uuid($message);
+    }
+
+    public function uuid_to_emoji($str)
+    {
+        $string_to_emoji = [];
+        $string_to_emoji["a"] = "😃";
+        $string_to_emoji["b"] = "🔣";
+        $string_to_emoji["c"] = "🤩";
+        $string_to_emoji["d"] = "🤪";
+        $string_to_emoji["e"] = "🤭";
+        $string_to_emoji["f"] = "🤫";
+        $string_to_emoji["g"] = "🤨";
+        $string_to_emoji["h"] = "🤮";
+        $string_to_emoji["i"] = "🤯";
+        $string_to_emoji["j"] = "🧐";
+        $string_to_emoji["k"] = "🤬";
+        $string_to_emoji["l"] = "🧡";
+        $string_to_emoji["m"] = "🤟";
+        $string_to_emoji["n"] = "🤲";
+        $string_to_emoji["o"] = "🧠";
+        $string_to_emoji["p"] = "🧒";
+        $string_to_emoji["q"] = "🧑";
+        $string_to_emoji["r"] = "🧔";
+        $string_to_emoji["s"] = "🧓";
+        $string_to_emoji["t"] = "🧕";
+        $string_to_emoji["u"] = "🤱";
+        $string_to_emoji["v"] = "🧙";
+        $string_to_emoji["w"] = "🧚";
+        $string_to_emoji["x"] = "🧛";
+        $string_to_emoji["y"] = "🧜";
+        $string_to_emoji["z"] = "🧝";
+        $string_to_emoji["0"] = "🧞";
+        $string_to_emoji["1"] = "🧟";
+        $string_to_emoji["2"] = "🧖";
+        $string_to_emoji["3"] = "🧗";
+        $string_to_emoji["4"] = "🧘";
+        $string_to_emoji["5"] = "🦓";
+        $string_to_emoji["6"] = "🦒";
+        $string_to_emoji["7"] = "🦔";
+        $string_to_emoji["8"] = "🦕";
+        $string_to_emoji["9"] = "🦖";
+        $string_to_emoji["-"] = "🇮🇳";
+        $emojis = "";
+        for ($i = 0; $i < strlen($str); $i++) {
+            $emojis .= $string_to_emoji[$str[$i]];
+        }
+        return $emojis;
+    }
+    public function emoji_to_uuid($emojis)
+    {
+        $emoji_to_string = [];
+        $emoji_to_string["😃"] = "a";
+        $emoji_to_string["🔣"] = "b";
+        $emoji_to_string["🤩"] = "c";
+        $emoji_to_string["🤪"] = "d";
+        $emoji_to_string["🤭"] = "e";
+        $emoji_to_string["🤫"] = "f";
+        $emoji_to_string["🤨"] = "g";
+        $emoji_to_string["🤮"] = "h";
+        $emoji_to_string["🤯"] = "i";
+        $emoji_to_string["🧐"] = "j";
+        $emoji_to_string["🤬"] = "k";
+        $emoji_to_string["🧡"] = "l";
+        $emoji_to_string["🤟"] = "m";
+        $emoji_to_string["🤲"] = "n";
+        $emoji_to_string["🧠"] = "o";
+        $emoji_to_string["🧒"] = "p";
+        $emoji_to_string["🧑"] = "q";
+        $emoji_to_string["🧔"] = "r";
+        $emoji_to_string["🧓"] = "s";
+        $emoji_to_string["🧕"] = "t";
+        $emoji_to_string["🤱"] = "u";
+        $emoji_to_string["🧙"] = "v";
+        $emoji_to_string["🧚"] = "w";
+        $emoji_to_string["🧛"] = "x";
+        $emoji_to_string["🧜"] = "y";
+        $emoji_to_string["🧝"] = "z";
+        $emoji_to_string["🧞"] = "0";
+        $emoji_to_string["🧟"] = "1";
+        $emoji_to_string["🧖"] = "2";
+        $emoji_to_string["🧗"] = "3";
+        $emoji_to_string["🧘"] = "4";
+        $emoji_to_string["🦓"] = "5";
+        $emoji_to_string["🦒"] = "6";
+        $emoji_to_string["🦔"] = "7";
+        $emoji_to_string["🦕"] = "8";
+        $emoji_to_string["🦖"] = "9";
+        $emoji_to_string["🇮🇳 "]= "-";
+        $string = "";
+        for ($i = 0; $i < strlen($emojis); $i++) {
+            $string .= $emoji_to_string[$emojis[$i]];
+        }
+        return $string;
     }
 }
