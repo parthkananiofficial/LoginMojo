@@ -18,10 +18,10 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::get('/session', [SessionTokenController::class,"index"]);
-    Route::post('/session/create', [SessionTokenController::class,"store"]);
-    Route::get('/session/{session}', [SessionTokenController::class,"show"]);
-    Route::post('/session', [SessionTokenController::class,"update"]);
+    Route::get('/token', [SessionTokenController::class,"index"]);
+    Route::post('/token/create', [SessionTokenController::class,"store"]);
+    Route::get('/token/{token}', [SessionTokenController::class,"show"]);
+    Route::post('/token', [SessionTokenController::class,"update"]);
 });
 
 
