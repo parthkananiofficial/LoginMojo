@@ -12,5 +12,5 @@ class SessionToken extends Model
     const STATUS_CREATED = "created";
     const STATUS_MESSAGE_RECEIVED = "received";
 
-    protected $fillable = ["user_id","session","website_session","mobile","status"];
+    protected $fillable = ["user_id","token","website_session","mobile","status"];
 }
