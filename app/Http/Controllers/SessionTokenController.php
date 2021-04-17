@@ -42,7 +42,7 @@ class SessionTokenController extends Controller
         $input = $request->all();
         $sesssionToken = [
             "user_id" => auth()->user()->id,
-            "session" => Str::uuid(),
+            "token" => Str::uuid(),
             "website_session" => $input['website_session'],
         ];
         $sesssionToken = SessionToken::create($sesssionToken);
@@ -62,17 +62,17 @@ class SessionTokenController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $session)
+    public function show(Request $request, $token)
     {
 
         $sesssionToken = [
             "user_id" => auth()->user()->id,
-            "session" => $session,
+            "token" => $token,
         ];
         $sesssionToken = SessionToken::where($sesssionToken)->first();
         $response = [];
         if ($sesssionToken) {
-            $response["session"] = $sesssionToken['session'];
+            $response["token"] = $sesssionToken['token'];
             $response["website_session"] = $sesssionToken['website_session'];
             $response["mobile"] = $sesssionToken['mobile'];
             return response()->json($response);
@@ -105,7 +105,7 @@ class SessionTokenController extends Controller
         $settings = $user->settings()->all();
 
         $recipient_message = $this->deduce_message($input['message']);
-        $sesssionToken = SessionToken::where(["session" => $recipient_message])->first();
+        $sesssionToken = SessionToken::where(["token" => $recipient_message])->first();
 
         $response = [];
         if ($sesssionToken) {

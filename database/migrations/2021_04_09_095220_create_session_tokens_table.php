@@ -16,7 +16,7 @@ class CreateSessionTokensTable extends Migration
     {
         Schema::create('session_tokens', function (Blueprint $table) {
             $table->id();
-            $table->string("session",50);
+            $table->string("token",50);
             $table->string("user_id");
             $table->string("website_session",64);
             $table->string("mobile",15)->nullable();
