@@ -40,9 +40,11 @@ class SessionTokenController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $token = Str::uuid();
+        $token = str_replace("-","",$token);
         $sesssionToken = [
             "user_id" => auth()->user()->id,
-            "token" => Str::uuid(),
+            "token" => $token,
             "website_session" => $input['website_session'],
         ];
         $sesssionToken = SessionToken::create($sesssionToken);
@@ -103,6 +105,7 @@ class SessionTokenController extends Controller
         $input = $request->all();
         $user = auth()->user();
         $settings = $user->settings()->all();
+        $input['message'] = mb_convert_encoding($input['message'], 'UTF-8', 'UTF-8');
 
         $recipient_message = $this->deduce_message($input['message']);
         $sesssionToken = SessionToken::where(["token" => $recipient_message])->first();
@@ -195,7 +198,6 @@ class SessionTokenController extends Controller
         $string_to_emoji["7"] = "🦔";
         $string_to_emoji["8"] = "🦕";
         $string_to_emoji["9"] = "🦖";
-        $string_to_emoji["-"] = "🇮🇳";
         $emojis = "";
         for ($i = 0; $i < strlen($str); $i++) {
             $emojis .= $string_to_emoji[$str[$i]];
@@ -241,10 +243,11 @@ class SessionTokenController extends Controller
         $emoji_to_string["🦔"] = "7";
         $emoji_to_string["🦕"] = "8";
         $emoji_to_string["🦖"] = "9";
-        $emoji_to_string["🇮🇳 "]= "-";
         $string = "";
-        for ($i = 0; $i < strlen($emojis); $i++) {
-            $string .= $emoji_to_string[$emojis[$i]];
+        $chrArray = preg_split('//u', $emojis, -1, PREG_SPLIT_NO_EMPTY);
+
+        for ($i = 0; $i < sizeof($chrArray); $i++) {
+            $string .= $emoji_to_string[$chrArray[$i]];
         }
         return $string;
     }
