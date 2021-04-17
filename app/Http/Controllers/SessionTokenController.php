@@ -105,7 +105,6 @@ class SessionTokenController extends Controller
         $input = $request->all();
         $user = auth()->user();
         $settings = $user->settings()->all();
-        $input['message'] = mb_convert_encoding($input['message'], 'UTF-8', 'UTF-8');
 
         $recipient_message = $this->deduce_message($input['message']);
         $sesssionToken = SessionToken::where(["token" => $recipient_message])->first();
