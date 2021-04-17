@@ -1,18 +1,16 @@
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
     <div class="mt-8 text-2xl">
-        Welcome !
+        Requests Data
     </div>
 
-    <div class="grid grid-cols-4 gap-5 mt-5 items-center">
+    <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-5 mt-5 items-center">
         <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
             <div class="flex items-center">
-                <span class="rounded-xl relative p-4 bg-gray-200">
-                    <svg width="40" fill="currentColor" height="40"
-                        class="text-gray-500 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z">
-                        </path>
+                <span class="rounded-xl relative p-2 bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                     </svg>
                 </span>
                 <p class="text-md text-black dark:text-white ml-2">
@@ -28,10 +26,10 @@
                 </p>
                 <div class="flex justify-center <?= get_color($dashboard_data['hike_today']) ?> text-sm">
                     @php
-                        get_arrow_svg($dashboard_data['hike_today']);
+                    get_arrow_svg($dashboard_data['hike_today']);
                     @endphp
 
-                    <span>
+                    <span class="ml-1">
                         {{$dashboard_data['hike_today']}}%
                     </span>
                     <span class="text-gray-400 ml-1">
@@ -43,13 +41,11 @@
 
         <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
             <div class="flex items-center">
-                <span class="rounded-xl relative p-4 bg-gray-200">
-                    <svg width="40" fill="currentColor" height="40"
-                        class="text-gray-500 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z">
-                        </path>
+                <span class="rounded-xl relative p-2 bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                     </svg>
                 </span>
                 <p class="text-md text-black dark:text-white ml-2">
@@ -65,9 +61,9 @@
                 </p>
                 <div class="flex justify-center <?= get_color($dashboard_data['hike_week']) ?> text-sm">
                     @php
-                        get_arrow_svg($dashboard_data['hike_week']);
+                    get_arrow_svg($dashboard_data['hike_week']);
                     @endphp
-                    <span>
+                    <span class="ml-1">
                         {{$dashboard_data['hike_week']}}%
                     </span>
                     <span class="text-gray-400 ml-1">
@@ -79,13 +75,11 @@
 
         <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
             <div class="flex items-center">
-                <span class="rounded-xl relative p-4 bg-gray-200">
-                    <svg width="40" fill="currentColor" height="40"
-                        class="text-gray-500 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z">
-                        </path>
+                <span class="rounded-xl relative p-2 bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                     </svg>
                 </span>
                 <p class="text-md text-black dark:text-white ml-2">
@@ -101,9 +95,9 @@
                 </p>
                 <div class="flex justify-center <?= get_color($dashboard_data['hike_month']) ?> text-sm">
                     @php
-                        get_arrow_svg($dashboard_data['hike_month']);
+                    get_arrow_svg($dashboard_data['hike_month']);
                     @endphp
-                    <span>
+                    <span class="ml-1">
                         {{$dashboard_data['hike_month']}}%
                     </span>
                     <span class="text-gray-400 ml-1">
@@ -114,13 +108,11 @@
         </div>
         <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
             <div class="flex items-center">
-                <span class="rounded-xl relative p-4 bg-gray-200">
-                    <svg width="40" fill="currentColor" height="40"
-                        class="text-gray-500 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                        viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z">
-                        </path>
+                <span class="rounded-xl relative p-2 bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                     </svg>
                 </span>
                 <p class="text-md text-black dark:text-white ml-2">
@@ -136,9 +128,9 @@
                 </p>
                 <div class="flex justify-center <?= get_color($dashboard_data['hike_year']) ?> text-sm">
                     @php
-                        get_arrow_svg($dashboard_data['hike_year']);
+                    get_arrow_svg($dashboard_data['hike_year']);
                     @endphp
-                    <span>
+                    <span class="ml-1">
                         {{$dashboard_data['hike_year']}}%
                     </span>
                     <span class="text-gray-400 ml-1">
@@ -229,7 +221,7 @@ function get_arrow_svg($value)
 {
     if($value > 0){
     ?>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
 </svg>
 <?php
@@ -237,7 +229,7 @@ function get_arrow_svg($value)
     elseif($value < 0)
     {
         ?>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
 </svg>
 <?php
