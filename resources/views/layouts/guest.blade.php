@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="scroll-behavior: smooth;">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/png">
 
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/png">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Icon -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/LineIcons.2.0.css') }}">
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        <!-- Animate -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/LineIcons.2.0.css') }}">
 
-        <!-- Tiny Slider  -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/tiny-slider.css') }}">
-        <!-- Tailwind css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/tailwind.css') }}">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
 
-    </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
-    </body>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/wow.js') }}" defer></script>
-    <script src="{{ asset('js/tiny-slider.js') }}" defer></script>
-    <script src="{{ asset('js/contact-form.js') }}" defer></script>
-    <script src="{{ asset('js/main.js') }}" defer></script>
+    <!-- Tiny Slider  -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tiny-slider.css') }}">
+    <!-- Tailwind css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tailwind.css') }}">
+    <!-- Countrypicker CSS&JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.3/build/css/intlTelInput.css" />
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.3/build/js/intlTelInput.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    <div class="font-sans text-gray-900 antialiased">
+        {{ $slot }}
+    </div>
+</body>
+<script>
+    function login_with_whatsapp() {
+                    var myWindow = window.open("{{ route('whatsender.store') }}", "_blank");
+                    myWindow.focus();
+                    setTimeout(function() {
+                        window.location.replace("{{ route('whatsender.show') }}");
+                        }, 2000);
+            }
+</script>
+
 </html>

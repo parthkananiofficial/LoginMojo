@@ -20,5 +20,10 @@
         class="back-to-top w-10 h-10 fixed bottom-0 right-0 mb-5 mr-5 flex items-center justify-center rounded-full bg-gray-600 text-white text-lg z-20 duration-300 hover:bg-gray-400">
         <i class="lni lni-arrow-up"></i>
     </a>
-
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/wow.js') }}" defer></script>
+<script src="{{ asset('js/tiny-slider.js') }}" defer></script>
+<script src="{{ asset('js/contact-form.js') }}" defer></script>
+<script src="{{ asset('js/main.js') }}" defer></script>
 </x-guest-layout>

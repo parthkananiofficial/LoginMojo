@@ -4,6 +4,8 @@ use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentationController;
+use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +25,11 @@ Route::get('/', function () {
 
 Route::get('contact-us', [ContactController::class,'index'])->name('contact');
 Route::post('contact-us', [ContactController::class,'saveContact'])->name('contact.store');
+
+Route::get('login/whatsapp', [LoginController::class, 'whatStore'])->name('whatsender.store');
+Route::get('login/whatsapp/check', [LoginController::class, 'whatshow'])->name('whatsender.show');
+
+Route::post('wahtsappverification', [VerifyWhatsAppController::class,'index'])->name('wahtsapp.verify');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
     Route::get('/dashboard', [DashboardController::class,"index"])->name('dashboard');

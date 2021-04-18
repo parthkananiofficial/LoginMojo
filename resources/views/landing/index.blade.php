@@ -9,16 +9,12 @@
                     World's 1<sup>st</sup> Login with WhatsApp
                     <br class="hidden lg:block"> Seamless Verification SaaS Provider </h2>
                 <div class="text-center mb-10 wow fadeInUp" data-wow-delay="1.2s">
-
-                    @if (Route::has('login'))
                     @auth
-                    <a href="{{ url('/dashboard') }}" rel="nofollow" class="btn">Go to Dashboard</a>
-                    @else
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}" rel="nofollow" class="btn">Create Free Account</a>
-                    @endif
+                    <a href="{{route('dashboard')}}" rel="nofollow" class="btn">Go to Dashboard</a>
                     @endauth
-                    @endif
+                    @guest
+                    <button onclick="login_with_whatsapp();" rel="nofollow" class="btn">Login / Register</button>
+                    @endguest
                 </div>
                 <div class="text-center wow fadeInUp" data-wow-delay="1.6s">
                     <img class="img-fluid mx-auto" src="{{ asset('img/hero.svg') }}" alt="">
@@ -282,21 +278,29 @@
                         </span>Community Support
                     </p>
 
-                    <a href="{{route('register')}}"
+
+                    @auth
+                    <a href="{{route('dashboard')}}" rel="nofollow" class="btn">Go to Dashboard</a>
+                    @endauth
+                    @guest
+                    <button onclick="login_with_whatsapp();"
                         class="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Create
                         Free Account
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
-                    </a>
+                    </button>
+                    @endguest
+
+
                     <p class="text-xs text-gray-500 mt-3">No Credit card required</p>
                 </div>
             </div>
             <div class="p-4 xl:w-1/3 md:w-1/3">
-                <div class="h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden">
+                <div class="h-full p-6 rounded-lg border-2 border-gray-500 flex flex-col relative overflow-hidden">
                     <span
-                        class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
+                        class="bg-gray-800 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">PROFESIONAL</h2>
                     <h1
                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
@@ -339,13 +343,19 @@
                             </svg>
                         </span>Email Support
                     </p>
-                    <a href="{{route('register')}}"
-                        class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Register
+
+                    @auth
+                    <a href="{{route('dashboard')}}" rel="nofollow" class="btn">Go to Dashboard</a>
+                    @endauth
+                    @guest
+                    <button onclick="login_with_whatsapp();"
+                        class="flex items-center mt-auto text-white bg-gray-800 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-600 rounded">Register
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
-                    </a>
+                    </button>
+                    @endguest
                     <p class="text-xs text-gray-500 mt-3">&nbsp;</p>
                 </div>
             </div>
@@ -409,7 +419,7 @@
 </section>
 <!-- Pricing Table Section End -->
 
-<!-- Subscribe Section Start -->
+{{-- <!-- Subscribe Section Start -->
 <section id="Subscribes" class="text-center py-20 bg-gray-100">
     <div class="container">
         <div class="flex justify-center mx-3">
@@ -432,9 +442,9 @@
         </div>
     </div>
 </section>
-<!-- Subscribe Section End -->
+<!-- Subscribe Section End --> --}}
 <!-- Contact Section Start -->
-<section id="contact" class="py-24">
+<section id="contact" class="py-24 bg-gray-100">
     <div class="container">
         <div class="text-center">
             <h2 class="mb-12 text-4xl text-gray-700 font-bold tracking-wide wow fadeInDown" data-wow-delay="0.3s">
@@ -546,4 +556,3 @@
 </section>
 <!-- Map Section End -->
 @stop
-
