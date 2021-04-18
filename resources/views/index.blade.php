@@ -59,8 +59,8 @@
       <div class="flex justify-between">
         <div class="w-full text-center">
           <h2 class="text-4xl font-bold leading-snug text-gray-700 mb-10 wow fadeInUp" data-wow-delay="1s">
-              World's 1<sup>st</sup> WhatsApp Seamless Verification SaaS Platform
-            <br class="hidden lg:block"> Built with TailwindCSS</h2>
+              World's 1<sup>st</sup> Login with WhatsApp
+            <br class="hidden lg:block"> Seamless Verification SaaS Provider </h2>
           <div class="text-center mb-10 wow fadeInUp" data-wow-delay="1.2s">
 
             @if (Route::has('login'))
