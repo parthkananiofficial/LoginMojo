@@ -18,7 +18,7 @@ class LoginController extends Controller
 
     private $whatSenderURL = "https://loginwithwhatsapp.com";
     //private $whatSenderURL = "http://dev.whatserver.com";
-    private $api_secret = "VBCy01VD36nQLjcoBliIWAehoeOMrN3I5s8YPgKZ";
+    private $api_secret = "wkwArf0T3HlO9ftCXkiRvYIojDxfvG7xF8Dcr7Jb";
     //public $api_secret = "n1fOKJLINnYED0vytqWAxw5yAI2hF2KTwlp26If7";
     public $whatsapp_url = "https://api.whatsapp.com/send/?phone={{phone}}&text={{message}}";
     public $phone = "919898388622"; //with country code
