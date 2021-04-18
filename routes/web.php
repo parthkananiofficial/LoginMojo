@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentationController;
 use Illuminate\Support\Facades\Route;
@@ -17,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('landing.index');
 })->name('home');
+
+Route::get('contact-us', [ContactController::class,'index'])->name('contact');
+Route::post('contact-us', [ContactController::class,'saveContact'])->name('contact.store');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
     Route::get('/dashboard', [DashboardController::class,"index"])->name('dashboard');
