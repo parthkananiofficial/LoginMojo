@@ -54,6 +54,7 @@ class SessionTokenController extends Controller
             "token" => $sesssionToken->token,
             "website_session" => $sesssionToken->website_session,
             "message" => $user_message,
+            "server_mobile" => '917990084081',
         ];
         return response()->json($response);
     }

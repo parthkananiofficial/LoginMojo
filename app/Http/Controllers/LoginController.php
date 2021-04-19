@@ -19,9 +19,7 @@ class LoginController extends Controller
     private $whatSenderURL = "https://loginwithwhatsapp.com";
     //private $whatSenderURL = "http://dev.whatserver.com";
     private $api_secret = "wkwArf0T3HlO9ftCXkiRvYIojDxfvG7xF8Dcr7Jb";
-    //public $api_secret = "n1fOKJLINnYED0vytqWAxw5yAI2hF2KTwlp26If7";
     public $whatsapp_url = "https://api.whatsapp.com/send/?phone={{phone}}&text={{message}}";
-    public $phone = "917990084081"; //with country code
 
     public function whatStore(Request $request)
     {
@@ -51,7 +49,7 @@ class LoginController extends Controller
         if(isset($response['token']))
         {
             session(['whatserver_token'=>$response['token']]);
-            $url = str_replace("{{phone}}",$this->phone,$this->whatsapp_url);
+            $url = str_replace("{{phone}}",$response['server_mobile'],$this->whatsapp_url);
             $url = str_replace("{{message}}",$response['message'],$url);
             return Redirect::to($url);
         }
