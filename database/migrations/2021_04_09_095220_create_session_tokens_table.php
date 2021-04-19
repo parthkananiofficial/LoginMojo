@@ -19,7 +19,7 @@ class CreateSessionTokensTable extends Migration
             $table->string("token",50);
             $table->string("user_id");
             $table->string("website_session",64);
-            $table->string("mobile",15)->nullable();
+            $table->string("mobile",20)->nullable();
             $table->string("status",15)->default(SessionToken::STATUS_CREATED)->nullable();
             $table->timestamps();
         });

@@ -21,7 +21,7 @@ class LoginController extends Controller
     private $api_secret = "wkwArf0T3HlO9ftCXkiRvYIojDxfvG7xF8Dcr7Jb";
     //public $api_secret = "n1fOKJLINnYED0vytqWAxw5yAI2hF2KTwlp26If7";
     public $whatsapp_url = "https://api.whatsapp.com/send/?phone={{phone}}&text={{message}}";
-    public $phone = "919898388622"; //with country code
+    public $phone = "917990084081"; //with country code
 
     public function whatStore(Request $request)
     {
