@@ -10,19 +10,18 @@
       </div>
       <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay="0.4s">
         <div class="mx-3 mb-8">
-          <h3 class="font-bold text-xl text-white mb-5">Company</h3>
+          <h3 class="font-bold text-xl text-white mb-5">Important links</h3>
           <ul>
-            <li><a href="#" class="footer-links">Version#</a></li>
-            <li><a href="#" class="footer-links">Surat - Gujarat</a></li>
-            <li><a href="#" class="footer-links">India</a></li>
-          </ul>
+            <li><a href="https://github.com/hbb20/CountryCodePickerProject" class="footer-links">Country Code Picker Github</a></li>
+            <li><a href="https://intl-tel-input.com" class="footer-links">International Telephone Input</a></li>
+        </ul>
         </div>
       </div>
       <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay="0.6s">
         <div class="mx-3 mb-8">
-          <h3 class="font-bold text-xl text-white mb-5">Account</h3>
+          <h3 class="font-bold text-xl text-white mb-5">Partner Programs</h3>
           <ul>
-            <li><a href="#" class="footer-links">info@versionhash.com</a></li>
+            <li><a href="#contact" class="footer-links">Reseller Programs</a></li>
             <li><a href="#" class="footer-links"></a></li>
           </ul>
         </div>
@@ -38,17 +37,17 @@
               </a>
             </li>
             <li class="mx-2">
-              <a href="#" class="footer-icon hover:bg-gray-400">
+              <a href="#" class="footer-icon hover:bg-gray-500">
                 <i class="lni lni-twitter-original" aria-hidden="true"></i>
               </a>
             </li>
             <li class="mx-2">
-              <a href="#" class="footer-icon hover:bg-red-500">
+              <a href="#" class="footer-icon hover:bg-gray-500">
                 <i class="lni lni-instagram-original" aria-hidden="true"></i>
               </a>
             </li>
             <li class="mx-2">
-              <a href="#" class="footer-icon hover:bg-gray-600">
+              <a href="#" class="footer-icon hover:bg-gray-500">
                 <i class="lni lni-linkedin-original" aria-hidden="true"></i>
               </a>
             </li>

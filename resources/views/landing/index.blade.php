@@ -26,10 +26,10 @@
 <!-- Hero Area End -->
 
 <!-- Services Section Start -->
-<section id="proscons" class="py-24">
+<section id="whyus" class="py-24">
     <div class="container">
         <div class="text-center">
-            <h2 class="mb-12 section-heading wow fadeInDown" data-wow-delay="0.3s">Pros & Cons</h2>
+            <h2 class="mb-12 section-heading wow fadeInDown" data-wow-delay="0.3s">Why Us?</h2>
         </div>
         <div class="flex flex-wrap">
             <!-- Services item -->
@@ -39,11 +39,8 @@
                         <i class="lni lni-cog"></i>
                     </div>
                     <div>
-                        <h3 class="service-title">Web Development</h3>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                            perspiciatis dicta
-                            labore nulla beatae quaerat quia
-                            incidunt laborum aspernatur...</p>
+                        <h3 class="service-title">Easy Mobile Verification</h3>
+                        <p class="text-gray-600">Mobile Number verification in just 2 simple click, avaoid OTP Verification</p>
                     </div>
                 </div>
             </div>
@@ -54,11 +51,8 @@
                         <i class="lni lni-bar-chart"></i>
                     </div>
                     <div>
-                        <h3 class="service-title">Graphic Design</h3>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                            perspiciatis dicta
-                            labore nulla beatae quaerat quia
-                            incidunt laborum aspernatur...</p>
+                        <h3 class="service-title">Seamless Authentication</h3>
+                        <p class="text-gray-600">Do not have to type anything and it is seamless login authentication process</p>
                     </div>
                 </div>
             </div>
@@ -69,11 +63,8 @@
                         <i class="lni lni-briefcase"></i>
                     </div>
                     <div>
-                        <h3 class="service-title">Business Branding</h3>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                            perspiciatis dicta
-                            labore nulla beatae quaerat quia
-                            incidunt laborum aspernatur...</p>
+                        <h3 class="service-title">Flexible Integration</h3>
+                        <p class="text-gray-600">Supports web integration and mobile app integration in any Technologies without any change in your DB Structure</p>
                     </div>
                 </div>
             </div>
@@ -84,11 +75,8 @@
                         <i class="lni lni-pencil-alt"></i>
                     </div>
                     <div>
-                        <h3 class="service-title">Content Writing</h3>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                            perspiciatis dicta
-                            labore nulla beatae quaerat quia
-                            incidunt laborum aspernatur...</p>
+                        <h3 class="service-title">Plugins Available</h3>
+                        <p class="text-gray-600">Wordpress, Woocommerce plugins available. Integration in your website in just a few minuts</p>
                     </div>
                 </div>
             </div>
@@ -99,11 +87,8 @@
                         <i class="lni lni-mobile"></i>
                     </div>
                     <div>
-                        <h3 class="service-title">App Development</h3>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                            perspiciatis dicta
-                            labore nulla beatae quaerat quia
-                            incidunt laborum aspernatur...</p>
+                        <h3 class="service-title">Helps to Increase User traffic</h3>
+                        <p class="text-gray-600">WhatsApp is used by over 2 billion users worldwide and it has already been a much preferred for login authentication</p>
                     </div>
                 </div>
             </div>
@@ -114,11 +99,8 @@
                         <i class="lni lni-layers"></i>
                     </div>
                     <div>
-                        <h3 class="service-title">Digital Marketing</h3>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                            perspiciatis dicta
-                            labore nulla beatae quaerat quia
-                            incidunt laborum aspernatur...</p>
+                        <h3 class="service-title">Useful accross various Industry</h3>
+                        <p class="text-gray-600">It can be useful for all kind of industries including eCommerce, Corporates, Financial services and any kind of mid or small businesses</p>
                     </div>
                 </div>
             </div>
@@ -134,7 +116,7 @@
         <div class="flex flex-wrap items-center">
             <div class="w-full lg:w-1/2">
                 <div class="mb-5 lg:mb-0">
-                    <h2 class="mb-12 section-heading wow fadeInDown" data-wow-delay="0.3s">Learn More About Us</h2>
+                    <h2 class="mb-12 section-heading wow fadeInDown" data-wow-delay="0.3s">Why Login with WhatsApp?</h2>
 
                     <div class="flex flex-wrap">
                         <div class="w-full sm:w-1/2 lg:w-1/2">
@@ -143,9 +125,8 @@
                                     <i class="lni lni-layers"></i>
                                 </div>
                                 <div class="features-content">
-                                    <h4 class="feature-title">Built with TailwindCSS</h4>
-                                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam tempora quidem
-                                        vel sint.</p>
+                                    <h4 class="feature-title">Delivery Rate</h4>
+                                    <p>100% guaranteed delivery of messages</p>
                                 </div>
                             </div>
                         </div>
@@ -155,9 +136,8 @@
                                     <i class="lni lni-gift"></i>
                                 </div>
                                 <div class="features-content">
-                                    <h4 class="feature-title">Free to Use</h4>
-                                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam tempora quidem
-                                        vel sint.</p>
+                                    <h4 class="feature-title">Quick</h4>
+                                    <p>Instant message Service</p>
                                 </div>
                             </div>
                         </div>
@@ -167,9 +147,8 @@
                                     <i class="lni lni-laptop-phone"></i>
                                 </div>
                                 <div class="features-content">
-                                    <h4 class="feature-title">Fully Responsive</h4>
-                                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam tempora quidem
-                                        vel sint.</p>
+                                    <h4 class="feature-title">No more Registration</h4>
+                                    <p>Why Login and registration are seperate activity ?</p>
                                 </div>
                             </div>
                         </div>
@@ -179,9 +158,8 @@
                                     <i class="lni lni-leaf"></i>
                                 </div>
                                 <div class="features-content">
-                                    <h4 class="feature-title">Easy to Customize</h4>
-                                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam tempora quidem
-                                        vel sint.</p>
+                                    <h4 class="feature-title">Security</h4>
+                                    <p>Verify with 360° degree Secured platform</p>
                                 </div>
                             </div>
                         </div>
@@ -198,6 +176,58 @@
 </div>
 <!-- Feature Section End -->
 
+
+
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="text-center">
+        <h2 class="mb-12 section-heading wow fadeInDown" data-wow-delay="0.3s">We are Growing !!</h2>
+    </div>
+    <div class="flex flex-wrap -m-4 text-center">
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-gray-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
+              </svg>
+            <h2 class="title-font font-medium text-3xl text-gray-900">10+</h2>
+          <p class="leading-relaxed">Plugins</p>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-gray-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">1.3K</h2>
+          <p class="leading-relaxed">Accounts</p>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-gray-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+            </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">74K</h2>
+          <p class="leading-relaxed">Unique Users</p>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-gray-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            <h2 class="title-font font-medium text-3xl text-gray-900">300K</h2>
+          <p class="leading-relaxed">Verifications</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 <!-- Clients Section Start -->
 <div id="clients" class="py-16 bg-gray-100">
     <div class="container">
@@ -207,12 +237,12 @@
         <div class="flex flex-wrap justify-center">
             <div class="w-1/2 md:w-1/4 lg:w-1/4">
                 <div class="m-3 wow fadeInUp" data-wow-delay="0.3s">
-                    <img class="client-logo" src="{{ asset('img/clients/img1.svg') }}" alt="">
+                    <img class="client-logo" src="{{ asset('img/clients/1loupe.svg') }}" alt="">
                 </div>
             </div>
             <div class="w-1/2 md:w-1/4 lg:w-1/4">
                 <div class="m-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <img class="client-logo" src="{{ asset('img/clients/img2.svg') }}" alt="">
+                    <img class="client-logo" src="{{ asset('img/clients/narnolia.svg') }}" alt="">
                 </div>
             </div>
             <div class="w-1/2 md:w-1/4 lg:w-1/4">
@@ -364,7 +394,7 @@
                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">BUSINESS</h2>
                     <h1
                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                        <span class="text-lg ml-1 font-normal text-gray-500">For extra large businesses or those in
+                        <span class="text-lg ml-1 font-normal text-gray-500">For large businesses or those in
                             regulated industries</span>
                     </h1>
                     <p class="flex items-center text-gray-600 mb-2">

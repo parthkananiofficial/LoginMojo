@@ -40,10 +40,13 @@ class SessionTokenController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $token = Str::uuid();
+        $auth_id = auth()->user()->id;
+
+        $token = $this->generate_token($auth_id);//Str::uuid();
+
         $token = str_replace("-","",$token);
         $sesssionToken = [
-            "user_id" => auth()->user()->id,
+            "user_id" => $auth_id,
             "token" => $token,
             "website_session" => $input['website_session'],
         ];
@@ -255,5 +258,11 @@ class SessionTokenController extends Controller
             }
         }
         return $string;
+    }
+
+    private function generate_token($unique_id)
+    {
+        $token = Str::uuid();
+        return  $token;
     }
 }

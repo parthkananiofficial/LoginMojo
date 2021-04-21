@@ -20,10 +20,10 @@
                         <a class="page-scroll active" href="#hero-area">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="page-scroll" href="#proscons">Pros & Cons</a>
+                        <a class="page-scroll" href="#whyus">Why Us?</a>
                     </li>
                     <li class="nav-item">
-                        <a class="page-scroll" href="#feature">feature</a>
+                        <a class="page-scroll" href="#feature">Login with WhatsApp</a>
                     </li>
                     <li class="nav-item">
                         <a class="page-scroll" href="#pricing">Pricing</a>
