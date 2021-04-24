@@ -115,6 +115,7 @@ class SessionTokenController extends Controller
 
         $response = [];
         if ($sesssionToken) {
+            $settings = $sesssionToken->user()->settings()->all();
             if ($sesssionToken['mobile'] === null) {
                 $throttle_pass = true;
 
@@ -124,6 +125,7 @@ class SessionTokenController extends Controller
                 }
                 if ($throttle_pass) {
                     $sesssionToken->update(["mobile" => $input['mobile']]);
+                    $user->useCredit(); // less credit
                     $response["reply"] = $settings['valid_message_template'];
                 } else {
                     $response["reply"] = $settings['throttle_message_template'];

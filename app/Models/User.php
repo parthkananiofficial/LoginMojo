@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Glorand\Model\Settings\Traits\HasSettingsField;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -19,6 +22,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasSettingsField;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +34,8 @@ class User extends Authenticatable
         'email',
         'mobile',
         'password',
+        'credit',
+        'expired_at',
     ];
 
     /**
@@ -70,4 +76,15 @@ class User extends Authenticatable
         'throttle_message_template' => 'Your daily limit reached',
         'duplicate_session_message_template' => 'This session code is already used',
     ];
+
+    public const DEFAULT_CREDIT = 100;
+
+    public function isIndian()
+    {
+        return Str::startsWith($this->mobile, '+91 ');
+    }
+    public function useCredit($credit_count = 1)
+    {
+        $this->update(['credit' => ($this->credit) - $credit_count]);
+    }
 }

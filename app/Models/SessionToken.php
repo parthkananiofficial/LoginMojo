@@ -13,4 +13,9 @@ class SessionToken extends Model
     const STATUS_MESSAGE_RECEIVED = "received";
 
     protected $fillable = ["user_id","token","website_session","mobile","status"];
+
+    public function user()
+    {
+        $this->hasOne(User::class,'user_id');
+    }
 }

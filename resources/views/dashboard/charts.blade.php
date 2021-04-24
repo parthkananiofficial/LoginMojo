@@ -1,8 +1,8 @@
+@include('includes.credits')
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
     <div class="mt-8 text-2xl">
         Requests Data
     </div>
-
     <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-5 mt-5 items-center">
         <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
             <div class="flex items-center">

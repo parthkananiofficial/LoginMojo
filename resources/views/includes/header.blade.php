@@ -3,7 +3,7 @@
     <div class="container">
         <nav class="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300">
             <a class="navbar-brand">
-                <img src="{{ asset('img/loginwithwhatsapp.png') }}" width="300" alt="Logo">
+                <img src="{{ asset('img/loginwithwhatsapp-black.png') }}" width="300" alt="Logo">
             </a>
             <button class="navbar-toggler focus:outline-none block lg:hidden" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -25,9 +25,9 @@
                     <li class="nav-item">
                         <a class="page-scroll" href="#feature">Login with WhatsApp</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="page-scroll" href="#pricing">Pricing</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>

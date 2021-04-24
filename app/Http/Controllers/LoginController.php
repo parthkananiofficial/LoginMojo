@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -68,7 +69,7 @@ class LoginController extends Controller
             if(isset($response['mobile']) && $response['mobile'] != null)
             {
                 $phone = $response['mobile'];
-                $phone = str_replace(" ","",$phone);
+                //$phone = str_replace(" ","",$phone);
                 $user = User::where(["mobile"=>$phone])->first();
                 if($user){
                     Auth::loginUsingId($user['id']);
@@ -78,6 +79,8 @@ class LoginController extends Controller
                         'mobile' => $phone,
                         'email' => null,
                         'password' => null,
+                        'credit' => User::DEFAULT_CREDIT,
+                        'expired_at' => Carbon::now()->addDays(7)
                     ]);
                     Auth::loginUsingId($user->id);
                 }
@@ -110,7 +113,6 @@ class LoginController extends Controller
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
         return $response;
     }

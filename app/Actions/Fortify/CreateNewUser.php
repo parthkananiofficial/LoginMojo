@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -33,6 +34,8 @@ class CreateNewUser implements CreatesNewUsers
             'mobile' => $input['mobile'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'credit' => User::DEFAULT_CREDIT,
+            'expired_at' => Carbon::now()->addDays(7),
         ]);
     }
 }

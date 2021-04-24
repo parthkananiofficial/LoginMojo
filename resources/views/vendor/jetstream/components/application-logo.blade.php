@@ -1,1 +1,1 @@
-<img src="{{ asset('img/loginwithwhatsapp.png') }}" width="200" alt="">
+<img src="{{ asset('img/loginwithwhatsapp-white.png') }}" width="200" alt="">

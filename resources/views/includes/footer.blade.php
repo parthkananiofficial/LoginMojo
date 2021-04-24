@@ -3,7 +3,7 @@
       <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay="0.2s">
         <div class="mx-3 mb-8">
           <div class="footer-logo mb-3">
-            <img src="{{ asset('img/loginwithwhatsapp.png') }}" width="200" alt="">
+            <img src="{{ asset('img/loginwithwhatsapp-white.png') }}" width="200" alt="">
           </div>
           <p class="text-gray-300">Developed with ♥ in India</p>
         </div>

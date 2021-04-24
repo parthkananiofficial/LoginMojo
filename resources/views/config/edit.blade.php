@@ -30,7 +30,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">
-                                        Invalid Session Message
+                                        Expired Session Message
                                     </label>
                                     <div class="mt-1">
                                         <textarea name="invalid_message_template" rows="2" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Default Message : 'Session is Expired or not found'">{{$settings['invalid_message_template']}}</textarea>
