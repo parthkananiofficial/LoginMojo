@@ -108,14 +108,15 @@ class SessionTokenController extends Controller
     public function update(Request $request)
     {
         $input = $request->all();
-        $user = auth()->user();
-        $settings = $user->settings()->all();
+        $admin_user = auth()->user();
+        $admin_settings = $admin_user->settings()->all();
 
         $recipient_message = $this->deduce_message($input['message']);
         $sesssionToken = SessionToken::where(["token" => $recipient_message])->first();
 
         $response = [];
         if ($sesssionToken) {
+            $user = User::find($sesssionToken['user_id']);
             $settings = User::find($sesssionToken['user_id'])->settings()->all();
             if ($sesssionToken['mobile'] === null) {
                 $throttle_pass = true;
@@ -135,7 +136,7 @@ class SessionTokenController extends Controller
                 $response["reply"] = $settings['duplicate_session_message_template'];
             }
         } else {
-            $response["reply"] = $settings['invalid_message_template'];
+            $response["reply"] = $admin_settings['invalid_message_template'];
         }
         return response()->json($response);
     }
