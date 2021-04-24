@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SessionToken;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -115,7 +116,7 @@ class SessionTokenController extends Controller
 
         $response = [];
         if ($sesssionToken) {
-            $settings = $sesssionToken->user()->settings()->all();
+            $settings = User::find($sesssionToken['user_id'])->settings()->all();
             if ($sesssionToken['mobile'] === null) {
                 $throttle_pass = true;
 
