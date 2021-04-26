@@ -7,6 +7,7 @@ use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\WhatsAppWebHookController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -50,4 +51,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 Route::post(
     '/stripe/webhook',
     [WebhookController::class, 'handleWebhook']
+);
+Route::post(
+    '/watiwhatsapp/webhook',
+    [WhatsAppWebHookController::class, 'handleReceiveMessage']
 );

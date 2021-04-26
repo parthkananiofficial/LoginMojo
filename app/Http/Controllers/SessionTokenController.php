@@ -43,9 +43,9 @@ class SessionTokenController extends Controller
         $input = $request->all();
         $auth_id = auth()->user()->id;
 
-        $token = $this->generate_token($auth_id);//Str::uuid();
+        $token = $this->generate_token($auth_id); //Str::uuid();
 
-        $token = str_replace("-","",$token);
+        $token = str_replace("-", "", $token);
         $sesssionToken = [
             "user_id" => $auth_id,
             "token" => $token,
@@ -58,7 +58,7 @@ class SessionTokenController extends Controller
             "token" => $sesssionToken->token,
             "website_session" => $sesssionToken->website_session,
             "message" => $user_message,
-            "server_mobile" => '917990084081',
+            "server_mobile" => '919898388622',
         ];
         return response()->json($response);
     }
@@ -254,10 +254,9 @@ class SessionTokenController extends Controller
 
         $string = "";
         for ($i = 0; $i < sizeof($chrArray); $i++) {
-            if(isset($emoji_to_string[$chrArray[$i]]))
-            {
+            if (isset($emoji_to_string[$chrArray[$i]])) {
                 $string .= $emoji_to_string[$chrArray[$i]];
-            }else{
+            } else {
                 $string .= $chrArray[$i];
             }
         }

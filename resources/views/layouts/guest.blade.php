@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="facebook-domain-verification" content="xriev3orj3y0waipcwhn2a3pg57iju" />
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/png">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">

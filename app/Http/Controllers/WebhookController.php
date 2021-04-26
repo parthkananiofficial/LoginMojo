@@ -19,11 +19,12 @@ class WebhookController extends CashierController
     public function handleCheckoutSessionCompleted($payload)
     {
         if (isset($payload['data']['object']['metadata']['plan_code'])) {
+            $payment_status = $payload['data']['object']['payment_status'];
             $plan_code = $payload['data']['object']['metadata']['plan_code'];
             $user = $this->getUserByStripeId($payload['data']['object']['customer']);
             $user_details = $this->getUserByStripeId($payload['data']['object']['customer_details']);
             $plans = Plan::PLANS;
-            if (isset($plans[$plan_code])) {
+            if (isset($plans[$plan_code]) && $payment_status == "paid") {
                 $package_verifications = $plans[$plan_code]['verifications'];
                 $package_validity = $plans[$plan_code]['validity'];
                 $user_verifications = $user->credit;
