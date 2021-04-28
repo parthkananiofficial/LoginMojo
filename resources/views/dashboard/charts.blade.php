@@ -166,7 +166,7 @@
                 have previous experience, we recommend reading all of the documentation from beginning to end.
             </div>
 
-            <a href="{{ route('documentation') }}">
+            <a href="https://documenter.getpostman.com/view/15579858/TzK2YYo5">
                 <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                     <div>API Documentation</div>
                     <div class="ml-1 text-indigo-500">
@@ -190,7 +190,7 @@
                 </path>
                 <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laracasts.com">Plugin &
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://documenter.getpostman.com/view/15579858/TzK2YYo5">Plugin &
                     Demos</a></div>
         </div>
 
@@ -199,7 +199,7 @@
                 We are developing the plugins for Wordpress, OpenCart so that you can integrate on the fly.
             </div>
 
-            <a href="https://laracasts.com">
+            <a href="https://documenter.getpostman.com/view/15579858/TzK2YYo5">
                 <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                     <div>Check Available Plugins</div>
 

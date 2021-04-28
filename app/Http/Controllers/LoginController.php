@@ -14,14 +14,18 @@ use Illuminate\Support\Str;
 class LoginController extends Controller
 {
     //Production
-    // private $whatSenderURL = "https://loginmojo.com";
-    // private $api_secret = "wkwArf0T3HlO9ftCXkiRvYIojDxfvG7xF8Dcr7Jb";
-
-    //Development
-    private $whatSenderURL = "http://dev.whatserver.com";
-    private $api_secret = "eQhTVcloetUnaFu5VF8ZnDPXxbgo5UypHkHxC4Zv";
+    private $whatSenderURL = "https://loginmojo.com";
+    private $api_secret = "wkwArf0T3HlO9ftCXkiRvYIojDxfvG7xF8Dcr7Jb";
 
     public $whatsapp_url = "https://api.whatsapp.com/send/?phone={{phone}}&text={{message}}";
+
+    public function __construct()
+    {
+        if (env('APP_ENV') == "local") {
+            $this->whatSenderURL = "http://dev.whatserver.com";
+            $this->api_secret = "eQhTVcloetUnaFu5VF8ZnDPXxbgo5UypHkHxC4Zv";
+        }
+    }
 
     public function whatStore(Request $request)
     {
