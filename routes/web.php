@@ -30,6 +30,9 @@ Route::get('/', function () {
 Route::get('/privacy', function () {
     return view('landing.privacypolicy');
 })->name('privacy');
+Route::get('/terms', function () {
+    return view('landing.terms');
+})->name('terms');
 
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact');
 Route::post('contact-us', [ContactController::class, 'saveContact'])->name('contact.store');
