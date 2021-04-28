@@ -4,18 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUsersTableAddName extends Migration
+class UpdateSessionTokensTableAddName extends Migration
 {
-    /**
+ /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        if (!Schema::hasColumn('users', 'name')) {
-            Schema::table('users', function (Blueprint $table) {
-                $table->string('name',25)->nullable();
+        if (!Schema::hasColumn('session_tokens', 'name')) {
+            Schema::table('session_tokens', function (Blueprint $table) {
+                $table->string('name',25)->after("mobile")->nullable();
             });
         }
     }
@@ -27,8 +27,8 @@ class UpdateUsersTableAddName extends Migration
      */
     public function down()
     {
-        if (Schema::hasColumn('users', 'name')) {
-            Schema::table('users', function (Blueprint $table) {
+        if (Schema::hasColumn('session_tokens', 'name')) {
+            Schema::table('session_tokens', function (Blueprint $table) {
                 $table->dropColumn('name');
             });
         }

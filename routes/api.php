@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SessionTokenController;
+use App\Http\Controllers\v1\SessionTokenController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,13 +18,12 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::get('/token', [SessionTokenController::class,"index"]);
-    Route::post('/token/create', [SessionTokenController::class,"store"]);
-    Route::get('/token/{token}', [SessionTokenController::class,"show"]);
-    Route::post('/token', [SessionTokenController::class,"update"]);
+
+    Route::prefix("v1")->group(function(){
+        // Route::apiResource("token",SessionTokenController::class)->only(["store","show"]);
+        Route::post('/token/create', [SessionTokenController::class,"store"]);
+        Route::get('/token/{token}', [SessionTokenController::class,"show"]);
+        //Route::post('/token', [SessionTokenController::class,"update"]);
+    });
+
 });
-
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });

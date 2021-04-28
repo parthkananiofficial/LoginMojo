@@ -173,13 +173,11 @@ trait WhatsAppTrait
         return $emojis;
     }
 
-    private function generate_token($unique_id)
+    private function generate_token($unique_id = null)
     {
         //$token = Str::uuid();
         // $time = substr(time(), -5); //last 4 character of the epoch time 9999 seconds unique
         $token = $this->getrandomchars(10);
-
-
         return  $token;
     }
     private function getrandomchars($n)

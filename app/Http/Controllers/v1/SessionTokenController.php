@@ -1,40 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Traits\WhatsAppTrait;
 use App\Models\SessionToken;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class SessionTokenController extends Controller
 {
 
     use WhatsAppTrait;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-
-        return "";
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -67,7 +47,7 @@ class SessionTokenController extends Controller
         $message .= '"When you are uncertain, pause and wait for clarity to come before making any decision." *Daaji*';
         $message .= '%0a';
         $message .= '%0a';
-        $message .= '--------------Send this message to get Login --------------%0a';
+        $message .= '--- Send this message to get Login ---%0a';
 
         $response = [
             "token" => $sesssionToken->token,
@@ -75,6 +55,7 @@ class SessionTokenController extends Controller
             "message" => $message,
             "server_mobile" => '917990084081',
         ];
+        Log::debug(json_encode($response));
         return response()->json($response);
     }
 
@@ -86,7 +67,6 @@ class SessionTokenController extends Controller
      */
     public function show(Request $request, $token)
     {
-
         $sesssionToken = [
             "user_id" => auth()->user()->id,
             "token" => $token,
@@ -102,40 +82,5 @@ class SessionTokenController extends Controller
         }
         return response()->json($response);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SessionToken  $sessionToken
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SessionToken $sessionToken)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SessionToken  $sessionToken
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-        $input = $request->all();
-        $response = $this->readMessage($input['message'], $input['mobile']);
-        return response()->json($response);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SessionToken  $sessionToken
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SessionToken $sessionToken)
-    {
-        //
-    }
 }
+
