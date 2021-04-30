@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class ConfigController extends Controller
@@ -32,6 +34,8 @@ class ConfigController extends Controller
             'invalid_message_template' => $input['invalid_message_template'],
             'throttle_message_template' => $input['throttle_message_template'],
             'duplicate_session_message_template' => $input['duplicate_session_message_template'],
+            'web_domain' => $input['web_domain'],
+            'app_package_name' => $input['app_package_name'],
         ]);
 
         if($input['valid_message_template'] == "")
@@ -50,6 +54,18 @@ class ConfigController extends Controller
         {
             $user->settings()->delete('duplicate_session_message_template');
         }
-        return redirect()->route('config.edit');
+        if($input['web_domain'] == "")
+        {
+            $user->settings()->delete('web_domain');
+        }
+        if($input['app_package_name'] == "")
+        {
+            $user->settings()->delete('app_package_name');
+        }
+
+        Session::flash('flash.banner', "Configuration Saved Successfully");
+        return Redirect::back();
+
+        //return redirect()->route('config.edit');
     }
 }

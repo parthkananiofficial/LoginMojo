@@ -66,7 +66,7 @@ class LoginController extends Controller
         $occurance = 0;
         $response = [];
         $token = session('whatserver_token');
-        while ($occurance < 10) {
+        while ($occurance < 20) {
             $occurance++;
 
             $response = $this->checkuserisloggedinornot($token);
@@ -89,7 +89,7 @@ class LoginController extends Controller
                 }
                 return redirect()->route('dashboard');
             } else {
-                sleep(5);
+                sleep(3);
             }
         }
         Session::flash('message', "We can't listen from WhatSender");

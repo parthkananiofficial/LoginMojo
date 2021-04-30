@@ -75,6 +75,8 @@ class User extends Authenticatable
         'invalid_message_template' => 'Session is Expired or not found',
         'throttle_message_template' => 'Your daily limit reached',
         'duplicate_session_message_template' => 'This session code is already used',
+        'web_domain' => null,
+        'app_package_name' => null,
     ];
 
     public const DEFAULT_CREDIT = 100;

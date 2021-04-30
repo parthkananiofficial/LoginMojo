@@ -16,17 +16,16 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('config.edit') }}" :active="request()->routeIs('config.edit')">
+                        {{ __('Configuration') }}
+                    </x-jet-nav-link>
+
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-jet-nav-link href="{{ route('api-tokens.index') }}"
                         :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}
                     </x-jet-nav-link>
                     @endif
-
-                    <x-jet-nav-link href="{{ route('config.edit') }}" :active="request()->routeIs('config.edit')">
-                        {{ __('Configuration') }}
-                    </x-jet-nav-link>
-
                     <x-jet-nav-link href="{{ route('plan') }}" :active="request()->routeIs('plan')">
                         {{ __('Plans') }}
                     </x-jet-nav-link>
@@ -128,14 +127,15 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
+                            <x-jet-dropdown-link href="{{ route('config.edit') }}">
+                                {{ __('Configuration') }}
+                            </x-jet-dropdown-link>
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                 {{ __('API Tokens') }}
                             </x-jet-dropdown-link>
                             @endif
-                            <x-jet-dropdown-link href="{{ route('config.edit') }}">
-                                {{ __('Configuration') }}
-                            </x-jet-dropdown-link>
 
                             <div class="border-t border-gray-100"></div>
 
@@ -175,13 +175,18 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('config.edit') }}" :active="request()->routeIs('config.edit')">
+                {{ __('Configuration') }}
+            </x-jet-responsive-nav-link>
+
             <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
                 :active="request()->routeIs('api-tokens.index')">
                 {{ __('API Tokens') }}
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{ route('config.edit') }}" :active="request()->routeIs('config.edit')">
-                {{ __('Configuration') }}
+            <x-jet-responsive-nav-link href="{{ route('plan') }}" :active="request()->routeIs('plan')">
+                {{ __('Plans') }}
             </x-jet-responsive-nav-link>
 
             {{-- <x-jet-responsive-nav-link href="{{ route('documentation') }}"

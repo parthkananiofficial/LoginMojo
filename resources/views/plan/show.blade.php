@@ -119,7 +119,7 @@
                                     <div class="flex items-center justify-center w-1/2 text-center p-4">Custom Development</div>
                                 </div>
                                 <a class="block flex items-center justify-center bg-blue-800 hover:bg-blue-700 p-8 text-md font-semibold text-gray-300 uppercase mt-8"
-                                    href="#">
+                                    href="https://api.whatsapp.com/send/phone=917405136746&text=Hello">
                                     <span>Contact sales</span>
                                     <span class="font-medium text-gray-300 ml-2">➔</span>
                                 </a>

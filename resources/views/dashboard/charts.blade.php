@@ -157,7 +157,7 @@
                 </path>
             </svg>
             <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a
-                    href="https://laravel.com/docs">Documentation</a></div>
+                    href="https://documenter.getpostman.com/view/15579858/TzK2YYo5">Documentation</a></div>
         </div>
 
         <div class="ml-12">
@@ -167,9 +167,9 @@
             </div>
 
             <a href="https://documenter.getpostman.com/view/15579858/TzK2YYo5">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
+                <div class="mt-3 flex items-center text-sm font-semibold text-gray-700">
                     <div>API Documentation</div>
-                    <div class="ml-1 text-indigo-500">
+                    <div class="ml-1 text-gray-500">
                         <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                             <path fill-rule="evenodd"
                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -190,7 +190,8 @@
                 </path>
                 <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://documenter.getpostman.com/view/15579858/TzK2YYo5">Plugin &
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a
+                    href="https://documenter.getpostman.com/view/15579858/TzK2YYo5">Plugin &
                     Demos</a></div>
         </div>
 
@@ -200,10 +201,10 @@
             </div>
 
             <a href="https://documenter.getpostman.com/view/15579858/TzK2YYo5">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
+                <div class="mt-3 flex items-center text-sm font-semibold text-gray-700">
                     <div>Check Available Plugins</div>
 
-                    <div class="ml-1 text-indigo-500">
+                    <div class="ml-1 text-gray-500">
                         <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                             <path fill-rule="evenodd"
                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
