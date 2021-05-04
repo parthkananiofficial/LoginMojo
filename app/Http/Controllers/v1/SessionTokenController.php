@@ -82,5 +82,5 @@ class SessionTokenController extends Controller
         }
         return response()->json($response);
     }
-}
+}   
 

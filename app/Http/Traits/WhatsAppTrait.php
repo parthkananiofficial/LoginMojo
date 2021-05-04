@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Spatie\WebhookServer\WebhookCall;
 
 trait WhatsAppTrait
 {
@@ -30,11 +31,14 @@ trait WhatsAppTrait
                 "id" => $token_id,
                 "user_id" => $user_id,
                 "token" => $token
-            ])->whereBetween('created_at', [now()->subMinutes(5), now()])
+            ])
+                ->whereBetween('created_at', [now()->subMinutes(5), now()])
                 ->first();
 
+            //test token $sesssionToken = SessionToken::find(33);
             if ($sesssionToken) {
                 $user = User::find($sesssionToken['user_id']);
+                //this is temporary
                 $settings = User::find($sesssionToken['user_id'])->settings()->all();
                 if ($sesssionToken['mobile'] === null) {
                     $throttle_pass = true;
@@ -46,6 +50,10 @@ trait WhatsAppTrait
                     if ($throttle_pass) {
                         $sesssionToken->update(["mobile" => $mobile, "name" => $name]);
                         $user->useCredit(); // less credit
+
+                        //it's time to call client
+                        $this->call_user_webhook($user,$sesssionToken);
+
                         $response["reply"] = $settings['valid_message_template'];
                     } else {
                         $response["reply"] = $settings['throttle_message_template'];
@@ -226,5 +234,40 @@ trait WhatsAppTrait
         }
         curl_close($ch);
         Log::debug("RESPONSE : " . $result);
+    }
+
+    private function call_user_webhook($user, $sesssionToken)
+    {
+        $webhooks = $user->userwebhook()->get();
+        $request_payload = [
+            "token" => $sesssionToken->token,
+            "website_session" => $sesssionToken->website_session,
+            "mobile" => $sesssionToken->mobile,
+            "name" => $sesssionToken->name,
+            "timestamp" => $sesssionToken->updated_at,
+        ];
+
+        foreach ($webhooks as $webhook) {
+            Log::debug("Calling webhook " . $webhook->id);
+            $w = WebhookCall::create()
+                ->url($webhook->url)
+                ->payload($request_payload)
+                ->doNotVerifySsl()
+                ->meta([
+                    "event" => "MESSAGE_RECEIVED_FROM_USER",
+                    "user_id" => $webhook->user_id,
+                    "webhook_id" => $webhook->id,
+                ])
+                ->timeoutInSeconds(5);
+            if ($webhook->secured)
+                $w->useSecret('sign-using-this-secret');
+            else
+                $w->doNotSign();
+            $w->dispatch();
+
+            Log::debug("dispatch");
+            Log::debug(json_encode($w));
+        }
+        return $sesssionToken;
     }
 }

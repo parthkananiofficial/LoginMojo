@@ -26,6 +26,10 @@
                         {{ __('API Tokens') }}
                     </x-jet-nav-link>
                     @endif
+                    <x-jet-nav-link href="{{ route('userwebhook.index') }}"
+                        :active="request()->routeIs('userwebhook.index')">
+                        {{ __('Webhook') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('plan') }}" :active="request()->routeIs('plan')">
                         {{ __('Plans') }}
                     </x-jet-nav-link>
@@ -185,14 +189,15 @@
                 {{ __('API Tokens') }}
             </x-jet-responsive-nav-link>
 
+            <x-jet-responsive-nav-link href="{{ route('userwebhook.index') }}"
+                        :active="request()->routeIs('userwebhook.index')">
+                        {{ __('Webhook') }}
+                    </x-jet-responsive-nav-link>
+
             <x-jet-responsive-nav-link href="{{ route('plan') }}" :active="request()->routeIs('plan')">
                 {{ __('Plans') }}
             </x-jet-responsive-nav-link>
 
-            {{-- <x-jet-responsive-nav-link href="{{ route('documentation') }}"
-            :active="request()->routeIs('documentation')">
-            {{ __('Documentation') }}
-            </x-jet-responsive-nav-link> --}}
         </div>
 
         <!-- Responsive Settings Options -->

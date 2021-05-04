@@ -32,12 +32,11 @@ class WebhookController extends CashierController
 
                 $new_verifications = $user_verifications + $package_verifications;
                 $new_validity = $user_validity->addMonths($package_validity);
-                $user->update(['expired_at'=>$new_validity,'credit'=>$new_verifications]);
-                if($user->email == null)
-                {
-                    $user->update(['email'=>$user_details['email']]);
+                $user->update(['expired_at' => $new_validity, 'credit' => $new_verifications]);
+                if ($user->email == null) {
+                    $user->update(['email' => $user_details['email']]);
                 }
-            }else{
+            } else {
                 //throw error to check the plan is not available
             }
         }

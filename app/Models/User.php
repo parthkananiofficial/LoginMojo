@@ -71,7 +71,7 @@ class User extends Authenticatable
     public $defaultSettings = [
         'throttle' => 10,
         'common_number' => true,
-        'valid_message_template' => 'Thank you for Login',
+        'valid_message_template' => 'Login Successful',
         'invalid_message_template' => 'Session is Expired or not found',
         'throttle_message_template' => 'Your daily limit reached',
         'duplicate_session_message_template' => 'This session code is already used',
@@ -88,5 +88,9 @@ class User extends Authenticatable
     public function useCredit($credit_count = 1)
     {
         $this->update(['credit' => ($this->credit) - $credit_count]);
+    }
+    public function userwebhook()
+    {
+        return $this->hasMany(UserWebhook::class,"user_id");
     }
 }

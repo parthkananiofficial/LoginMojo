@@ -1,4 +1,4 @@
-<div class="container">
+{{-- <div class="container">
     <div class="flex flex-wrap">
         <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay="0.2s">
             <div class="mx-3 mb-8">
@@ -18,8 +18,8 @@
                     <li><a href="https://github.com/hbb20/CountryCodePickerProject" class="footer-links">Country Code
                             Picker Github</a></li>
                     <li><a href="https://intl-tel-input.com" class="footer-links">International Telephone Input</a></li>
-                    <li><a href="/privacy" class="footer-links">Privacy Policy</a></li>
-                    <li><a href="/terms" class="footer-links">Terms & Conditions</a></li>
+                    <li><a href="{{route('privacy')}}" class="footer-links">Privacy Policy</a></li>
+                    <li><a href="{{route('terms')}}" class="footer-links">Terms & Conditions</a></li>
                 </ul>
             </div>
         </div>
@@ -61,4 +61,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}

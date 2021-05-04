@@ -14,15 +14,14 @@ class WhatsAppWebHookController extends Controller
     public function handleReceiveMessage(Request $request)
     {
         $input =  $request->all();
-        Log::debug(json_encode($input));
-        if($input['type'] === "text" && $input['eventType'] === "message")
-        {
-            $mobile = $input['waId'];//phone number
-            $message = $input['text'];//message
-            $name = $input['senderName'];//name
-            $response = $this->readMessage($message,$mobile,$name);
-            if(isset($response['reply']))
-                $this->send_message($mobile, $response["reply"],"LOGIN");
+        Log::debug("WATI Webhook Received : " . json_encode($input));
+        if (isset($input['type']) && $input['type'] === "text" && $input['eventType'] === "message") {
+            $mobile = $input['waId']; //phone number
+            $message = $input['text']; //message
+            $name = $input['senderName']; //name
+            $response = $this->readMessage($message, $mobile, $name);
+            if (isset($response['reply']))
+                $this->send_message($mobile, $response["reply"], "LOGIN");
         }
         return response()->json(['success' => 'success'], 200);
     }

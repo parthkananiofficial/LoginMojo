@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MojoSession;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
 
-class LoginController extends Controller
+class MojoSessionController extends Controller
 {
-    //Production
     private $whatSenderURL = "https://loginmojo.com";
     private $api_secret = "wkwArf0T3HlO9ftCXkiRvYIojDxfvG7xF8Dcr7Jb";
 
     public $whatsapp_url = "https://api.whatsapp.com/send/?phone={{phone}}&text={{message}}";
-
     public function __construct()
     {
         if (env('APP_ENV') == "local") {
@@ -27,7 +24,8 @@ class LoginController extends Controller
         }
     }
 
-    public function whatStore(Request $request)
+
+    public function store(Request $request)
     {
         Log::debug("Token Creation Request initiated");
         $curl = curl_init();
@@ -55,30 +53,32 @@ class LoginController extends Controller
 
         $response = json_decode($response, true);
         if (isset($response['token'])) {
-            session(['whatserver_token' => $response['token']]);
+            $mojoSession = MojoSession::create([
+                "website_session" => Str::uuid(),
+                "token" => $response['token'],
+            ]);
+            session(['mojo_id' => $mojoSession->id]);
             $url = str_replace("{{phone}}", $response['server_mobile'], $this->whatsapp_url);
             $url = str_replace("{{message}}", $response['message'], $url);
-            return Redirect::to($url);
+            return response()->json(["url" => $url]);
         }
+        return response()->json(["url" => ""]);
     }
-    public function whatshow(Request $request)
-    {
-        $occurance = 0;
-        $response = [];
-        $token = session('whatserver_token');
-        while ($occurance < 20) {
-            $occurance++;
 
-            $response = $this->checkuserisloggedinornot($token);
-            $response = json_decode($response, true);
-            if (isset($response['mobile']) && $response['mobile'] != null) {
-                $phone = $response['mobile'];
+    public function show(Request $request)
+    {
+        if (!Auth::user()) {
+            $mojo_id = session('mojo_id');
+            $mojo_session = MojoSession::find($mojo_id);
+            if (isset($mojo_session['mobile'])) {
+                $name = $mojo_session['name'];
+                $phone = $mojo_session['mobile'];
                 $user = User::where(["mobile" => $phone])->first();
                 if ($user) {
                     Auth::loginUsingId($user['id']);
                 } else {
                     $user = User::create([
-                        'name' => null,
+                        'name' => $name,
                         'mobile' => $phone,
                         'email' => null,
                         'password' => null,
@@ -87,36 +87,29 @@ class LoginController extends Controller
                     ]);
                     Auth::loginUsingId($user->id);
                 }
-                return redirect()->route('dashboard');
-            } else {
-                sleep(3);
+                return true;
             }
+        }else{
+            return true;
         }
-        Session::flash('message', "We can't listen from WhatSender");
-        return Redirect::back();
+        return false;
     }
 
-    function checkuserisloggedinornot($token)
+    public function webhook(Request $request)
     {
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $this->whatSenderURL . '/api/v1/token/' . $token,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_HTTPHEADER => array(
-                'Accept: application/json',
-                'Authorization: Bearer ' . $this->api_secret,
-                'Content-Type: application/json'
-            ),
-        ));
+        $input = $request->all();
+        Log::debug("Final webhook called");
+        Log::debug(json_encode($input));
 
-        $response = curl_exec($curl);
-        curl_close($curl);
-        return $response;
+        if(isset($input['token']))
+        {
+            MojoSession::where("token",$input['token'])->update([
+                "mobile" => $input['mobile'],
+                "name" => $input['name'],
+            ]);
+            Log::debug("Using webhook the record updated successfully");
+            return response()->json(['success' => 'success'], 200);
+        }
+        return response()->json(['success' => 'false'], 403);
     }
 }

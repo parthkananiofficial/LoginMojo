@@ -13,7 +13,7 @@
                         <div class="px-4 sm:px-0">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Website & Application</h3>
                             <p class="mt-1 text-sm text-gray-600">
-                                Identity and Helps user to Redirect
+                                Identity and helps user to Redirect
                             </p>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                     <div class="mt-1">
                                         <textarea name="valid_message_template" rows="2"
                                             class="shadow-sm focus:ring-gray-500 focus:border-gray-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Default Message : 'Thank you for Login'">{{$settings['valid_message_template']}}</textarea>
+                                            placeholder="Default Message : 'Login Successful'">{{$settings['valid_message_template']}}</textarea>
                                     </div>
                                 </div>
                                 <div>

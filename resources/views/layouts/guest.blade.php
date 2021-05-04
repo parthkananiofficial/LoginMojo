@@ -40,14 +40,4 @@
         {{ $slot }}
     </div>
 </body>
-<script>
-    function login_with_whatsapp() {
-                    var myWindow = window.open("{{ route('whatsender.store') }}", "_blank");
-                    myWindow.focus();
-                    setTimeout(function() {
-                        window.location.replace("{{ route('whatsender.show') }}");
-                        }, 2000);
-            }
-</script>
-
 </html>
