@@ -25,7 +25,7 @@
                                         <x-jet-checkbox id="terms" name="terms" onclick="terms()" />
                                         <span
                                             class="ml-2 text-sm text-gray-600">{{ __('Accept Terms & Conditions') }}</span>
-                                        <a class="ml-1" href="{{route('terms')}}">
+                                        <a class="ml-1" href="https://loginmojo.com/terms">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600"
                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

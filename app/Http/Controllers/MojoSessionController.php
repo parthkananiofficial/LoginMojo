@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 class MojoSessionController extends Controller
 {
-    private $whatSenderURL = "https://loginmojo.com";
+    private $whatSenderURL = "https://app.loginmojo.com";
     private $api_secret = "wkwArf0T3HlO9ftCXkiRvYIojDxfvG7xF8Dcr7Jb";
 
     public $whatsapp_url = "https://api.whatsapp.com/send/?phone={{phone}}&text={{message}}";
@@ -29,6 +29,7 @@ class MojoSessionController extends Controller
     {
         Log::debug("Token Creation Request initiated");
         $curl = curl_init();
+        $website_session = Str::uuid();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $this->whatSenderURL . '/api/v1/token/create',
             CURLOPT_RETURNTRANSFER => true,
@@ -39,7 +40,7 @@ class MojoSessionController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => '{
-            "website_session" : "' . Str::uuid() . '"
+            "website_session" : "' . $website_session . '"
         }',
             CURLOPT_HTTPHEADER => array(
                 'Accept: application/json',
@@ -54,7 +55,7 @@ class MojoSessionController extends Controller
         $response = json_decode($response, true);
         if (isset($response['token'])) {
             $mojoSession = MojoSession::create([
-                "website_session" => Str::uuid(),
+                "website_session" => $website_session,
                 "token" => $response['token'],
             ]);
             session(['mojo_id' => $mojoSession->id]);
