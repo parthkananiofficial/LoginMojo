@@ -162,9 +162,11 @@
             </div>
 
             @endif
-
+            @include('includes.help')
         </div>
+
     </div>
+
     <script>
         function copyToClipboard(element) {
             var $temp = $("<input>");

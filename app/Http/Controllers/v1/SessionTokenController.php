@@ -57,7 +57,7 @@ class SessionTokenController extends Controller
                 $auth_id = $this->uuid_to_emoji((string) $auth_id);
 
 
-                $message = $token_id . '.' . $auth_id . '. *Thought of the day* .' . $encoded_token . '. %0a';
+                $message = $token_id . '.' . $auth_id . '. *Good Thought* .' . $encoded_token . '. %0a';
                 $message .= '%0a';
                 $message .= '"When you are uncertain, pause and wait for clarity to come before making any decision." *Daaji*';
                 $message .= '%0a';
