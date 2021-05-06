@@ -13,10 +13,7 @@ trait WhatsAppTrait
 {
     public function readMessage($message, $mobile, $name = null)
     {
-        Log::debug("Message : " . $message);
-        Log::debug("mobile : " . $mobile);
-        Log::debug("name : " . $name);
-
+        Log::debug("Message : " . $message . ", Mobile : " . $mobile. ", Name : " . $name);
         $result = explode(".", $message);
         $response = [];
 
@@ -244,6 +241,7 @@ trait WhatsAppTrait
             "website_session" => $sesssionToken->website_session,
             "mobile" => $sesssionToken->mobile,
             "name" => $sesssionToken->name,
+            "meta" => json_decode($sesssionToken->meta,true),
             "timestamp" => $sesssionToken->updated_at,
         ];
 

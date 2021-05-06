@@ -12,10 +12,14 @@ class SessionToken extends Model
     const STATUS_CREATED = "created";
     const STATUS_MESSAGE_RECEIVED = "received";
 
-    protected $fillable = ["user_id","token","website_session","name","mobile","status"];
+    protected $fillable = ["user_id","token","website_session","name","mobile","meta","status"];
 
     public function user()
     {
         $this->hasOne(User::class,'user_id');
+    }
+    public function meta()
+    {
+        $this->hasOne(SessionTokenMeta::class,'session_token_id');
     }
 }
