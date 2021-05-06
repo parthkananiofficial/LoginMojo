@@ -29,65 +29,71 @@ class SessionTokenController extends Controller
         $auth_id = auth()->user()->id;
         $response = [];
 
-        if ($user->credit > 0 && $user->expired_at > now()) {
-            $token = $this->generate_token($auth_id); //Str::uuid();
+        if (isset($input['website_session'])) {
+            if ($user->credit > 0 && $user->expired_at > now()) {
+                $token = $this->generate_token($auth_id); //Str::uuid();
 
-            $token = str_replace("-", "", $token);
-            $sesssionToken = [
-                "user_id" => $auth_id,
-                "token" => $token,
-                "website_session" => $input['website_session'],
-            ];
+                $token = str_replace("-", "", $token);
+                $sesssionToken = [
+                    "user_id" => $auth_id,
+                    "token" => $token,
+                    "website_session" => $input['website_session'],
+                ];
 
-            //create meta entry if any
-            if (isset($input['meta']) && is_array($input['meta']) && count($input['meta']) > 0) {
-                $sesssionToken['meta'] = json_encode($input['meta']);
-                if(strlen($sesssionToken['meta']) > 1000)
-                {
-                    $sesssionToken['meta'] = json_encode([
-                        "code" => "ERROR_META. Reduce your meta data in Request payload or contact customer support."
-                    ]);
+                //create meta entry if any
+                if (isset($input['meta']) && is_array($input['meta']) && count($input['meta']) > 0) {
+                    $sesssionToken['meta'] = json_encode($input['meta']);
+                    if (strlen($sesssionToken['meta']) > 1000) {
+                        $sesssionToken['meta'] = json_encode([
+                            "code" => "ERROR_META. Reduce your meta data in Request payload or contact customer support."
+                        ]);
+                    }
                 }
+                $sesssionToken = SessionToken::create($sesssionToken);
+
+                $encoded_token = $this->uuid_to_emoji((string) $sesssionToken->token);
+                $token_id = $this->uuid_to_emoji((string) $sesssionToken->id);
+                //$user_message = $sesssionToken->token;
+                $auth_id = $this->uuid_to_emoji((string) $auth_id);
+
+
+                $message = $token_id . '.' . $auth_id . '. *Thought of the day* .' . $encoded_token . '. %0a';
+                $message .= '%0a';
+                $message .= '"When you are uncertain, pause and wait for clarity to come before making any decision." *Daaji*';
+                $message .= '%0a';
+                $message .= '%0a';
+                $message .= '--- Send this message to get Login ---%0a';
+
+                $response = [
+                    "success" => true,
+                    "token" => $sesssionToken->token,
+                    "website_session" => $sesssionToken->website_session,
+                    "message" => $message,
+                    "server_mobile" => '917990084081',
+                    "credit_balance" => $user->credit,
+                    "credit_expired_at" => $user->expired_at,
+                    "code" => "S_TOKEN",
+                ];
+            } elseif ($user->credit <= 0) {
+                $response = [
+                    "success" => false,
+                    "error_message" => "Your don't have sufficient balance",
+                    "code" => "E_ZERO_CREDIT",
+                ];
+            } elseif ($user->expired_at <= now()) {
+                $response = [
+                    "success" => false,
+                    "error_message" => "Your account is expired",
+                    "code" => "E_ZERO_VALIDITY",
+                ];
             }
-            $sesssionToken = SessionToken::create($sesssionToken);
-
-            $encoded_token = $this->uuid_to_emoji((string) $sesssionToken->token);
-            $token_id = $this->uuid_to_emoji((string) $sesssionToken->id);
-            //$user_message = $sesssionToken->token;
-            $auth_id = $this->uuid_to_emoji((string) $auth_id);
-
-
-            $message = $token_id . '.' . $auth_id . '. *Thought of the day* .' . $encoded_token . '. %0a';
-            $message .= '%0a';
-            $message .= '"When you are uncertain, pause and wait for clarity to come before making any decision." *Daaji*';
-            $message .= '%0a';
-            $message .= '%0a';
-            $message .= '--- Send this message to get Login ---%0a';
-
-            $response = [
-                "success" => true,
-                "token" => $sesssionToken->token,
-                "website_session" => $sesssionToken->website_session,
-                "message" => $message,
-                "server_mobile" => '917990084081',
-                "remaining_credit" => $user->credit,
-                "expired_at" => $user->expired_at,
-                "code" => "S_TOKEN",
-            ];
-        } elseif ($user->credit <= 0) {
+        } else {
             $response = [
                 "success" => false,
-                "error_message" => "Your don't have sufficient balance",
-                "code" => "E_ZERO_CREDIT",
-            ];
-        } elseif ($user->expired_at <= now()) {
-            $response = [
-                "success" => false,
-                "error_message" => "Your account is expired",
-                "code" => "E_ZERO_VALIDITY",
+                "error_message" => "Request payload structure is not proper",
+                "code" => "E_FORMAT",
             ];
         }
-
         Log::debug(json_encode($response));
         return response()->json($response);
     }

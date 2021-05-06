@@ -41,7 +41,7 @@
                                 </div>
                                 <label for="secured" class="flex items-center">
                                     <x-jet-checkbox id="secured" name="secured" onclick="secured()" />
-                                    <span class="ml-2 text-sm text-gray-600">{{ __('Sign with Secret?') }}</span>
+                                    <span class="ml-2 text-sm text-gray-600">{{ __('(Opptional) Sign with Secret?') }}</span>
                                 </label>
                             </div>
                         </div>

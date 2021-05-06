@@ -258,7 +258,7 @@ trait WhatsAppTrait
                 ])
                 ->timeoutInSeconds(5);
             if ($webhook->secured)
-                $w->useSecret('sign-using-this-secret');
+                $w->useSecret($webhook->signature);
             else
                 $w->doNotSign();
             $w->dispatch();
