@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\LogTrait;
 use Illuminate\Http\Request;
 use App\Http\Traits\WhatsAppTrait;
 use App\Models\SessionToken;
@@ -15,12 +16,15 @@ class SessionTokenController extends Controller
 {
 
     use WhatsAppTrait;
+    use LogTrait;
+    public $timings = [];
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $input = $request->all();
@@ -30,8 +34,12 @@ class SessionTokenController extends Controller
         $response = [];
 
         if (isset($input['website_session'])) {
+            Log::debug("Token Request Initiated : " . $input['website_session']);
             if ($user->credit > 0 && $user->expired_at > now()) {
+
+                $this->log_start_task('token_generation');
                 $token = $this->generate_token($auth_id); //Str::uuid();
+                $this->log_stop_task('token_generation');
 
                 $token = str_replace("-", "", $token);
                 $sesssionToken = [
@@ -49,13 +57,16 @@ class SessionTokenController extends Controller
                         ]);
                     }
                 }
-                $sesssionToken = SessionToken::create($sesssionToken);
 
+                $this->log_start_task('token_creation_db');
+                $sesssionToken = SessionToken::create($sesssionToken);
+                $this->log_stop_task('token_creation_db');
+
+                $this->log_start_task('uuid_to_emoji');
                 $encoded_token = $this->uuid_to_emoji((string) $sesssionToken->token);
                 $token_id = $this->uuid_to_emoji((string) $sesssionToken->id);
-                //$user_message = $sesssionToken->token;
                 $auth_id = $this->uuid_to_emoji((string) $auth_id);
-
+                $this->log_stop_task('uuid_to_emoji');
 
                 $message = $token_id . '.' . $auth_id . '. *Good Thought* .' . $encoded_token . '. %0a';
                 $message .= '%0a';
@@ -95,6 +106,7 @@ class SessionTokenController extends Controller
             ];
         }
         Log::debug(json_encode($response));
+        $this->log_print_timings($this->timings);
         return response()->json($response);
     }
 

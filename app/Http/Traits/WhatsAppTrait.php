@@ -11,18 +11,25 @@ use Spatie\WebhookServer\WebhookCall;
 
 trait WhatsAppTrait
 {
+    use LogTrait;
+    public $timings = [];
+
     public function readMessage($message, $mobile, $name = null)
     {
-        Log::debug("Message : " . $message . ", Mobile : " . $mobile. ", Name : " . $name);
+        Log::debug("Message : " . $message . ", Mobile : " . $mobile . ", Name : " . $name);
         $result = explode(".", $message);
         $response = [];
 
         //check the auth_id and token is inside the message or not
         if (count($result) >= 3) {
+
+            $this->log_start_task('emoji_to_uuid');
             $token_id = $this->emoji_to_uuid($result[0]);
             $user_id = $this->emoji_to_uuid($result[1]);
             $token = $this->emoji_to_uuid($result[3]);
+            $this->log_stop_task('emoji_to_uuid');
 
+            $this->log_start_task('lookup_session_in_db');
             //check the token where token_id, user_id, and token is matching
             $sesssionToken = SessionToken::where([
                 "id" => $token_id,
@@ -31,25 +38,40 @@ trait WhatsAppTrait
             ])
                 ->whereBetween('created_at', [now()->subMinutes(5), now()])
                 ->first();
+            $this->log_stop_task('lookup_session_in_db');
 
             //test token $sesssionToken = SessionToken::find(33);
+
             if ($sesssionToken) {
+                $this->log_start_task('deduce_user_from_db');
                 $user = User::find($sesssionToken['user_id']);
+                $this->log_stop_task('deduce_user_from_db');
                 //this is temporary
-                $settings = User::find($sesssionToken['user_id'])->settings()->all();
+                $settings = $user->settings()->all();
+
                 if ($sesssionToken['mobile'] === null) {
                     $throttle_pass = true;
 
+                    $this->log_start_task('check_throttle');
                     //check throttle condition
                     if ($settings['throttle'] > 0 && $this->dailyThrottleCount($mobile, $sesssionToken['user_id']) > $settings['throttle']) {
                         $throttle_pass = false;
                     }
+                    $this->log_stop_task('check_throttle');
+
                     if ($throttle_pass) {
+                        $this->log_start_task('update_token_with_mobile');
                         $sesssionToken->update(["mobile" => $mobile, "name" => $name]);
+                        $this->log_stop_task('update_token_with_mobile');
+
+                        $this->log_start_task('use_credit');
                         $user->useCredit(); // less credit
+                        $this->log_stop_task('use_credit');
 
                         //it's time to call client
-                        $this->call_user_webhook($user,$sesssionToken);
+                        $this->log_start_task('call_webhook');
+                        $this->call_user_webhook($user, $sesssionToken);
+                        $this->log_stop_task('call_webhook');
 
                         $response["reply"] = $settings['valid_message_template'];
                     } else {
@@ -62,6 +84,7 @@ trait WhatsAppTrait
                 $response["reply"] = "Invalid Request or Expired";
             }
         }
+        $this->log_print_timings($this->timings,"Update Token from User");
         Log::debug(json_encode($response));
         return $response;
     }
@@ -241,7 +264,7 @@ trait WhatsAppTrait
             "website_session" => $sesssionToken->website_session,
             "mobile" => $sesssionToken->mobile,
             "name" => $sesssionToken->name,
-            "meta" => json_decode($sesssionToken->meta,true),
+            "meta" => json_decode($sesssionToken->meta, true),
             "timestamp" => $sesssionToken->updated_at,
         ];
 
