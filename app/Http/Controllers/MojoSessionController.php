@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MojoSession;
-use App\Models\User;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\MojoSession;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewUserNotification;
+use Illuminate\Support\Facades\Notification;
 
 class MojoSessionController extends Controller
 {
@@ -86,6 +88,7 @@ class MojoSessionController extends Controller
                         'credit' => User::DEFAULT_CREDIT,
                         'expired_at' => Carbon::now()->addDays(7)
                     ]);
+                    Notification::route('slack', env('LEAD_SLACK_WEBHOOK_URL'))->notify(new NewUserNotification(["user" => $user]));
                     Auth::loginUsingId($user->id);
                 }
                 return true;

@@ -36,6 +36,6 @@ trait LogTrait
         }
         $message .= "- - - - - - - - - - - Time taken in seconds : " . number_format($total_time, 2) . " - - - - - - - - - - \n";
         $message .= "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n";
-        Log::info($message);
+        Log::debug($message);
     }
 }
