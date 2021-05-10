@@ -40,7 +40,7 @@ return [
     /*
      * The amount of times the webhook should be called before we give up.
      */
-    'tries' => 3,
+    'tries' => 2,
 
     /*
      * This class determines how many seconds there should be between attempts.

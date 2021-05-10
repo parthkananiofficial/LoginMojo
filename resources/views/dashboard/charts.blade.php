@@ -151,7 +151,7 @@ $true_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 in
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
                         </div>';
-$false_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inline-flex items-center justify-center text-white relative z-10">
+$false_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500 inline-flex items-center justify-center text-white relative z-10">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
@@ -167,7 +167,8 @@ $false_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inl
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CHECKLIST</h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Complete below list to get Verified.</h1>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Complete below list to get
+                                Verified.</h1>
                             <div class="flex-wrap w-full">
                                 <div class="flex relative pb-12">
                                     <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
@@ -256,7 +257,7 @@ $false_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inl
                             <h1 class="title-font text-lg font-medium text-gray-900 mb-3"></h1>
                             <div class="flex-wrap w-full">
                                 @if(count($session_tokens)==0)
-                                    Data not available
+                                Data not available
                                 @endif
                                 @foreach ($session_tokens as $session_token_key => $session_token)
                                 <div class="flex relative pb-12">
@@ -271,7 +272,8 @@ $false_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inl
                                             Session</h2>
                                         <p class="leading-relaxed">{{$session_token->website_session}}</p>
                                         @if(isset($session_token->mobile))
-                                            <p class="leading-relaxed">{{$session_token->name}} ( {{$session_token->mobile}} )</p>
+                                        <p class="leading-relaxed">{{$session_token->name}} ( {{$session_token->mobile}}
+                                            )</p>
                                         @endif
                                     </div>
                                 </div>
