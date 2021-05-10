@@ -9,7 +9,7 @@
                 </path>
             </svg>
             <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a target="_blank"
-                    href="https://loginmojo.com/blog/">Looking for Integration?</a></div>
+                    href="https://loginmojo.com/blog/">Looking for an Integration?</a></div>
         </div>
 
         <div class="ml-12">
@@ -47,7 +47,7 @@
 
         <div class="ml-12">
             <div class="mt-2 text-sm text-gray-500">
-                Looking for customer support or Technical Support, we are here for you.
+                Do you have any questions in your Mind ? Refer our FAQ section.
             </div>
 
             <a target="_blank" href="https://loginmojo.com/faqs/">

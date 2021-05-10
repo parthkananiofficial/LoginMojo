@@ -27,7 +27,7 @@
                                     <div class="mt-1">
                                         <textarea name="web_domain" rows="1"
                                             class="shadow-sm focus:ring-gray-500 focus:border-gray-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="mywebsite.com">{{$settings['web_domain']}}</textarea>
+                                            placeholder="mywebsite.com  (Optional)">{{$settings['web_domain']}}</textarea>
                                     </div>
                                 </div>
                                 <div>
@@ -37,7 +37,7 @@
                                     <div class="mt-1">
                                         <textarea name="app_package_name" rows="1"
                                             class="shadow-sm focus:ring-gray-500 focus:border-gray-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="com.example.firstapp">{{$settings['app_package_name']}}</textarea>
+                                            placeholder="com.example.firstapp (Optional)">{{$settings['app_package_name']}}</textarea>
                                     </div>
                                 </div>
 

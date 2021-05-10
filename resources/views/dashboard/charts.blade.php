@@ -1,7 +1,7 @@
 @include('includes.credits')
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
     <div class="mt-8 text-2xl">
-        Requests Data
+        User Verification Analysis
     </div>
     <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-5 mt-5 items-center">
         <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
@@ -166,9 +166,8 @@ $false_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500 
                 <div class="p-4 md:w-1/2">
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CHECKLIST</h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Complete below list to get
-                                Verified.</h1>
+                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">ACCOUNT HEALTH STATUS</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-6">Mandatory Checklist to keep your account active</h1>
                             <div class="flex-wrap w-full">
                                 <div class="flex relative pb-12">
                                     <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
@@ -253,7 +252,7 @@ $false_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500 
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">RECENT
-                                REQUESTS</h2>
+                                REQUESTS STATUS</h2>
                             <h1 class="title-font text-lg font-medium text-gray-900 mb-3"></h1>
                             <div class="flex-wrap w-full">
                                 @if(count($session_tokens)==0)

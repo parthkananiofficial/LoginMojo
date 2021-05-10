@@ -22,7 +22,7 @@
                         <div class="px-4 sm:px-0">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Create Webhook</h3>
                             <p class="mt-1 text-sm text-gray-600">
-                                Will notify when user Send the Message Successfully.
+                                Webhook is required to send verified user details to your server.
                             </p>
                         </div>
                     </div>

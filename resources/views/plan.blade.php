@@ -14,20 +14,20 @@
                 <!-- This example requires Tailwind CSS v2.0+ -->
                 <div class="relative bg-white overflow-hidden">
                     <div class="max-w-7xl mx-auto">
-                        <div
-                            class="relative z-10 pb-8  sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                        <div class="relative z-10 pb-8  sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
                             <main
                                 class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                                 <div class="sm:text-center lg:text-left">
                                     <h1
                                         class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                                         <span class="block xl:inline">Introductory Offer</span>
-                                        <span class="block text-gray-600 xl:inline">Don't loose</span>
+                                        <span class="block text-gray-600 xl:inline">Don't loose it !</span>
                                     </h1>
                                     <p
                                         class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
-                                        commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+                                        We are running a promotional offer for a limited period with a huge discount of
+                                        as much as upto 90%.<br><br>
+                                        Buy now and start giving a seamless login experience to your online customers.
                                     </p>
                                 </div>
                             </main>
@@ -35,8 +35,7 @@
                     </div>
                     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                         <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-                            src="{{asset('img/offer-banner.png')}}"
-                            alt="">
+                            src="{{asset('img/offer-banner.png')}}" alt="">
                     </div>
                 </div>
 
@@ -57,7 +56,7 @@
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                                         <span>${{$plans['comboPlan6']['usd_price']}}</span>
-                                        <span class="text-lg ml-1 font-normal text-gray-500">Only</span>
+                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">$79</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -67,7 +66,7 @@
                                                 viewBox="0 0 24 24">
                                                 <path d="M20 6L9 17l-5-5"></path>
                                             </svg>
-                                        </span>2,000 Verifications
+                                        </span>1,000 Verifications
                                     </p>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -131,7 +130,7 @@
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                                         <span>${{$plans['comboPlan19']['usd_price']}}</span>
-                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">399</span>
+                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">$299</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -141,7 +140,7 @@
                                                 viewBox="0 0 24 24">
                                                 <path d="M20 6L9 17l-5-5"></path>
                                             </svg>
-                                        </span>10,000 Verifications
+                                        </span>5,000 Verifications
                                     </p>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -214,16 +213,6 @@
                                                 viewBox="0 0 24 24">
                                                 <path d="M20 6L9 17l-5-5"></path>
                                             </svg>
-                                        </span>10,000+ Verification
-                                    </p>
-                                    <p class="flex items-center text-gray-600 mb-2">
-                                        <span
-                                            class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                            <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3"
-                                                viewBox="0 0 24 24">
-                                                <path d="M20 6L9 17l-5-5"></path>
-                                            </svg>
                                         </span>Customisable Message Templates
                                     </p>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -278,7 +267,7 @@
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                                         <span>${{$plans['verificationTopup1000']['usd_price']}}</span>
-                                        <span class="text-lg ml-1 font-normal text-gray-500">Only</span>
+                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">$49</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -312,7 +301,7 @@
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                                         <span>${{$plans['verificationTopup5000']['usd_price']}}</span>
-                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">199</span>
+                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">$199</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -347,7 +336,7 @@
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                                         <span>${{$plans['verificationTopup10000']['usd_price']}}</span>
-                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">299</span>
+                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">$299</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -391,7 +380,7 @@
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                                         <span>${{$plans['validityTopup1Month']['usd_price']}}</span>
-                                        <span class="text-lg ml-1 font-normal text-gray-500">Only</span>
+                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">$39</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -425,7 +414,7 @@
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                                         <span>${{$plans['validityTopup3Months']['usd_price']}}</span>
-                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">149</span>
+                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">$149</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span
@@ -458,7 +447,7 @@
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                                         <span>${{$plans['validityTopup6Months']['usd_price']}}</span>
-                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">299</span>
+                                        <span class="text-lg ml-1 font-normal text-gray-500 line-through">$299</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
                                         <span

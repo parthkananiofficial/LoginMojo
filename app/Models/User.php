@@ -71,10 +71,10 @@ class User extends Authenticatable
     public $defaultSettings = [
         'throttle' => 10,
         'common_number' => true,
-        'valid_message_template' => 'Login Successful',
-        'invalid_message_template' => 'Session is Expired or not found',
-        'throttle_message_template' => 'Your daily limit reached',
-        'duplicate_session_message_template' => 'This session code is already used',
+        'valid_message_template' => 'Congratulations, Your account is verified successfully✅ \n Go back to your Website or Application',
+        'invalid_message_template' => 'Sorry 🙇‍♀️, your session is expired / not found ',
+        'throttle_message_template' => 'Sorry 🙇‍♀️, your daily limit exceeded',
+        'duplicate_session_message_template' => 'Oops 😮, this session code has already been used',
         'web_domain' => null,
         'app_package_name' => null,
     ];

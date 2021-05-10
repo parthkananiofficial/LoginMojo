@@ -6,7 +6,7 @@
         </x-slot>
 
         <x-slot name="description">
-            {{ __('API tokens allow third-party services to authenticate with our application on your behalf.') }}
+            {{ __('API token is used to authenticate your system integration with loginMojo.') }}
         </x-slot>
 
         <x-slot name="form">
