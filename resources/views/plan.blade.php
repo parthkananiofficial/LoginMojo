@@ -9,6 +9,39 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @include('includes.credits')
+
+
+                <!-- This example requires Tailwind CSS v2.0+ -->
+                <div class="relative bg-white overflow-hidden">
+                    <div class="max-w-7xl mx-auto">
+                        <div
+                            class="relative z-10 pb-8  sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                            <main
+                                class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                                <div class="sm:text-center lg:text-left">
+                                    <h1
+                                        class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                                        <span class="block xl:inline">Introductory Offer</span>
+                                        <span class="block text-gray-600 xl:inline">Don't loose</span>
+                                    </h1>
+                                    <p
+                                        class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
+                                        commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+                                    </p>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+                        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+                            src="{{asset('img/offer-banner.png')}}"
+                            alt="">
+                    </div>
+                </div>
+
+
+
                 <!-- COMBO Pricing section Start -->
                 <section class="text-gray-600 body-font overflow-hidden" id="combo">
                     <div class="container px-5 py-10 mx-auto">
@@ -23,7 +56,7 @@
                                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">STARTER</h2>
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                        <span>$99</span>
+                                        <span>${{$plans['comboPlan6']['usd_price']}}</span>
                                         <span class="text-lg ml-1 font-normal text-gray-500">Only</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -77,8 +110,8 @@
                                         </span>Email Support
                                     </p>
 
-                                    {{-- {{ $plans['comboPlan99']->button('Buy Now') }} --}}
-                                    <a href="{{route('plan.show','comboPlan99')}}"
+                                    {{-- {{ $plans['comboPlan6']->button('Buy Now') }} --}}
+                                    <a href="{{route('plan.show','comboPlan6')}}"
                                         class="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Buy
                                         Now
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round"
@@ -97,7 +130,7 @@
                                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">PROFESIONAL</h2>
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                        <span>$199</span>
+                                        <span>${{$plans['comboPlan19']['usd_price']}}</span>
                                         <span class="text-lg ml-1 font-normal text-gray-500 line-through">399</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -151,8 +184,8 @@
                                         </span>Email Support
                                     </p>
 
-                                    {{-- {{ $plans['comboPlan199']->button('Buy Now') }} --}}
-                                    <a href="{{route('plan.show','comboPlan199')}}"
+                                    {{-- {{ $plans['comboPlan19']->button('Buy Now') }} --}}
+                                    <a href="{{route('plan.show','comboPlan19')}}"
                                         class="flex items-center mt-auto text-white bg-gray-800 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-600 rounded">Buy
                                         Now
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round"
@@ -244,7 +277,7 @@
                                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">SMALL PACK</h2>
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                        <span>$49</span>
+                                        <span>${{$plans['verificationTopup1000']['usd_price']}}</span>
                                         <span class="text-lg ml-1 font-normal text-gray-500">Only</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -278,7 +311,7 @@
                                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">MEDIUM PACK</h2>
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                        <span>$99</span>
+                                        <span>${{$plans['verificationTopup5000']['usd_price']}}</span>
                                         <span class="text-lg ml-1 font-normal text-gray-500 line-through">199</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -313,7 +346,7 @@
                                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">LARGE PACK</h2>
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                        <span>$169</span>
+                                        <span>${{$plans['verificationTopup10000']['usd_price']}}</span>
                                         <span class="text-lg ml-1 font-normal text-gray-500 line-through">299</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -357,7 +390,7 @@
                                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">SHORT TERM</h2>
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                        <span>$29</span>
+                                        <span>${{$plans['validityTopup1Month']['usd_price']}}</span>
                                         <span class="text-lg ml-1 font-normal text-gray-500">Only</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -368,7 +401,7 @@
                                                 viewBox="0 0 24 24">
                                                 <path d="M20 6L9 17l-5-5"></path>
                                             </svg>
-                                        </span>1 Month Validity
+                                        </span>{{$plans['validityTopup1Month']['validity']}} Month Validity
                                     </p>
                                     {{-- {{ $plans['validityTopup1Month']->button('Buy Now') }} --}}
                                     <a href="{{route('plan.show','validityTopup1Month')}}"
@@ -391,7 +424,7 @@
                                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">MEDIUM TERM</h2>
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                        <span>$99</span>
+                                        <span>${{$plans['validityTopup3Months']['usd_price']}}</span>
                                         <span class="text-lg ml-1 font-normal text-gray-500 line-through">149</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -402,11 +435,11 @@
                                                 viewBox="0 0 24 24">
                                                 <path d="M20 6L9 17l-5-5"></path>
                                             </svg>
-                                        </span>6 Months Validity
+                                        </span>{{$plans['validityTopup3Months']['validity']}} Months Validity
                                     </p>
 
 
-                                    <a href="{{route('plan.show','validityTopup6Months')}}"
+                                    <a href="{{route('plan.show','validityTopup3Months')}}"
                                         class="flex items-center mt-auto text-white bg-gray-800 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-600 rounded">Buy
                                         Now
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round"
@@ -424,7 +457,7 @@
                                     <h2 class="text-sm tracking-widest title-font mb-1 font-medium">LONG TERM</h2>
                                     <h1
                                         class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                        <span>$169</span>
+                                        <span>${{$plans['validityTopup6Months']['usd_price']}}</span>
                                         <span class="text-lg ml-1 font-normal text-gray-500 line-through">299</span>
                                     </h1>
                                     <p class="flex items-center text-gray-600 mb-2">
@@ -435,12 +468,12 @@
                                                 viewBox="0 0 24 24">
                                                 <path d="M20 6L9 17l-5-5"></path>
                                             </svg>
-                                        </span>12 Months Validity
+                                        </span>{{$plans['validityTopup6Months']['validity']}} Months Validity
                                     </p>
-                                    {{-- {{ $plans['validityTopup12Months']->button('Buy Now',['class' => 'flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded']) }}
+                                    {{-- {{ $plans['validityTopup6Months']->button('Buy Now',['class' => 'flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded']) }}
                                     --}}
 
-                                    <a href="{{route('plan.show','validityTopup12Months')}}"
+                                    <a href="{{route('plan.show','validityTopup6Months')}}"
                                         class="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Buy
                                         Now
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round"

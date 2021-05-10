@@ -68,19 +68,27 @@ trait WhatsAppTrait
                         $user->useCredit(); // less credit
                         $this->log_stop_task('use_credit');
 
-                        //it's time to call client
-                        $this->log_start_task('call_webhook');
-                        $this->call_user_webhook($user, $sesssionToken);
-                        $this->log_stop_task('call_webhook');
+                        // //it's time to call client
+                        // $this->log_start_task('call_webhook');
+                        // $this->call_user_webhook($user, $sesssionToken);
+                        // $this->log_stop_task('call_webhook');
 
-                        $response["reply"] = $settings['valid_message_template'];
+                        $response =[
+                            'user' => $user,
+                            'sesssionToken' => $sesssionToken,
+                            'success' => true,
+                            'reply' => $settings['valid_message_template'],
+                        ];
                     } else {
+                        $response['success'] = false;
                         $response["reply"] = $settings['throttle_message_template'];
                     }
                 } else {
+                    $response['success'] = false;
                     $response["reply"] = $settings['duplicate_session_message_template'];
                 }
             } else {
+                $response['success'] = false;
                 $response["reply"] = "Invalid Request or Expired";
             }
         }
@@ -256,7 +264,7 @@ trait WhatsAppTrait
         Log::debug("RESPONSE : " . $result);
     }
 
-    private function call_user_webhook($user, $sesssionToken)
+    private function call_user_webhook($user, $sesssionToken,$user_reply)
     {
         $webhooks = $user->userwebhook()->get();
         $request_payload = [
@@ -278,6 +286,7 @@ trait WhatsAppTrait
                     "event" => "MESSAGE_RECEIVED_FROM_USER",
                     "user_id" => $webhook->user_id,
                     "webhook_id" => $webhook->id,
+                    "reply" => $user_reply,
                 ])
                 ->timeoutInSeconds(5);
             if ($webhook->secured)

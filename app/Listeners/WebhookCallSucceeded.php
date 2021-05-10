@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Http\Traits\WhatsAppTrait;
 use App\Models\UserWebhookLog;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\InteractsWithQueue;
@@ -10,6 +11,7 @@ use Spatie\WebhookServer\Events\WebhookCallSucceededEvent;
 
 class WebhookCallSucceeded
 {
+    use WhatsAppTrait;
     /**
      * Create the event listener.
      *
@@ -39,5 +41,6 @@ class WebhookCallSucceeded
             "status" => $event->response->getStatusCode(),
         ];
         UserWebhookLog::create($log);
+        $this->send_message($event->payload['mobile'], $event->meta["reply"], "LOGIN");
     }
 }
