@@ -121,8 +121,4 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/wow.js') }}" defer></script>
-    <script src="{{ asset('js/tiny-slider.js') }}" defer></script>
-    <script src="{{ asset('js/contact-form.js') }}" defer></script>
-    <script src="{{ asset('js/main.js') }}" defer></script>
 </x-guest-layout>
