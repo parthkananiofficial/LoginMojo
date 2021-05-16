@@ -20,8 +20,24 @@ class PlanController extends Controller
         $plan = null;
         if (isset(Plan::PLANS[$plan_name])) {
             $plan = Plan::PLANS[$plan_name];
+
+            $price = 0;
+            if (env('APP_ENV') == "local") {
+                if ($isIndian) {
+                    $price = $plan['uat_inr_price_id'];
+                } else {
+                    $price = $plan['uat_usd_price_id'];
+                }
+            } else {
+                if ($isIndian) {
+                    $price = $plan['inr_price_id'];
+                } else {
+                    $price = $plan['usd_price_id'];
+                }
+            }
+
             $plan['paymentIntent'] = Auth::user()->checkout(
-                $isIndian ? $plan['inr_price_id'] : $plan['usd_price_id'],
+                $price,
                 [
                     'metadata' => [
                         "plan_code" => $plan_name

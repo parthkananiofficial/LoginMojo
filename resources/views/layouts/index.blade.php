@@ -17,7 +17,7 @@
                 <div class="flex flex-col w-full md:w-1/1 p-4">
                     <div class="flex flex-col flex-1 justify-center mb-4">
                         <div class="w-full mt-4">
-                            <div class="form-horizontal sm:w-3/4 lg:w-1/2 mx-auto" method="POST" action="#">
+                            <div class="form-horizontal sm:w-2/3 lg:w-2/3 mx-auto" method="POST" action="#">
                                 <div class="block mt-4">
                                     <label for="terms" class="flex items-center">
                                         <x-jet-checkbox id="terms" name="terms" onclick="terms()" />
