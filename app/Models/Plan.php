@@ -25,9 +25,9 @@ class Plan extends Model
             "uat_inr_price_id" => "price_1IjeJ3SAE3nPGOnvHbLVRnDy",
             "uat_usd_price_id" => "price_1Ij5fASAE3nPGOnvz88Jc9Kq",
             "validity" => 3,
-            "verifications" => 4999,
+            "verifications" => 5000,
             "usd_price" => 19,
-            "inr_price" => 1450
+            "inr_price" => 1449
         ],
         "verificationTopup1000" => [
             "inr_price_id" => "price_1Ire46SAE3nPGOnvZgUasaPd",
