@@ -83,7 +83,10 @@ class User extends Authenticatable
 
     public function isIndian()
     {
-        return Str::startsWith($this->mobile, '+91 ');
+        if (strlen($this->mobile) === 12 && Str::startsWith($this->mobile, '91'))
+            return true;
+        else
+            return false;
     }
     public function useCredit($credit_count = 1)
     {
@@ -91,6 +94,6 @@ class User extends Authenticatable
     }
     public function userwebhook()
     {
-        return $this->hasMany(UserWebhook::class,"user_id");
+        return $this->hasMany(UserWebhook::class, "user_id");
     }
 }
