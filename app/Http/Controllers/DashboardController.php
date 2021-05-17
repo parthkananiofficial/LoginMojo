@@ -104,4 +104,11 @@ class DashboardController extends Controller
         // Log::debug("Hike :" . $hike);
         return $hike;
     }
+    function login()
+    {
+        if (Auth::user()){
+            return redirect('/dashboard');
+        }
+        return view('landing.index');
+    }
 }

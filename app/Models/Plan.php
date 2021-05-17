@@ -22,8 +22,8 @@ class Plan extends Model
         "comboPlan19" => [
             "inr_price_id" => "price_1IrdxBSAE3nPGOnv0vh9ncmD",
             "usd_price_id" => "price_1IrdxBSAE3nPGOnvluJ7wwX5",
-            "uat_inr_price_id" => "price_1IjeJ3SAE3nPGOnvHbLVRnDy",
-            "uat_usd_price_id" => "price_1Ij5fASAE3nPGOnvz88Jc9Kq",
+            "uat_inr_price_id" => "price_1IjeIOSAE3nPGOnv7yvSrdsU",
+            "uat_usd_price_id" => "price_1Ij5foSAE3nPGOnvlV8Rohic",
             "validity" => 3,
             "verifications" => 5000,
             "usd_price" => 19,

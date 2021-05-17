@@ -29,9 +29,22 @@ class WebhookController extends CashierController
                 $package_validity = $plans[$plan_code]['validity'];
                 $user_verifications = $user->credit;
                 $user_validity = Carbon::parse($user->expired_at);
-
+                $nowDate = Carbon::now();
+                if($nowDate->gt($user_validity))
+                {
+                    $user_validity = $nowDate;
+                }
                 $new_verifications = $user_verifications + $package_verifications;
                 $new_validity = $user_validity->addMonths($package_validity);
+
+                Log::info("Current Verifictions balance : " .$user_verifications);
+                Log::info("Adding Verifications : " . $package_verifications);
+                Log::info("Total Verifications : " . $new_verifications);
+
+                Log::info("Current validity:" .$user_validity);
+                Log::info("Adding validity : " . $package_validity);
+                Log::info("Updated validity:" .$new_validity);
+
                 $user->update(['expired_at' => $new_validity, 'credit' => $new_verifications]);
                 if ($user->email == null) {
                     $user->update(['email' => $user_details['email']]);

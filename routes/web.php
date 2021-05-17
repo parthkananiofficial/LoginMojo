@@ -23,9 +23,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('landing.index');
-})->name('home');
+// Route::get('/', function () {
+//     return view('landing.index');
+// })->name('home');
+
+Route::get('/', [DashboardController::class, 'login'])->name('home');
 
 Route::get('/privacy', function () {
     return view('landing.privacypolicy');
@@ -39,7 +41,8 @@ Route::post('contact-us', [ContactController::class, 'saveContact'])->name('cont
 
 Route::get('login/mojo', [MojoSessionController::class, 'store'])->name('mojo.store');
 Route::get('login/mojo/check', [MojoSessionController::class, 'show'])->name('mojo.show');
-Route::post('/login/mojo/privatewebhook',
+Route::post(
+    '/login/mojo/privatewebhook',
     [MojoSessionController::class, 'webhook']
 );
 
