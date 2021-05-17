@@ -1,3 +1,10 @@
+@if(Auth::user()->credit === 50 && Auth::user()->stripe_id == null)
+<div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+    🎉 Congratulations, you got <span class="font-bold">50 Free</span> credits with <span class="font-bold">7 days
+    </span>validity.
+</div>
+@endif
+
 @include('includes.credits')
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
     <div class="mt-8 text-2xl">
@@ -166,8 +173,10 @@ $false_status = '<div class="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500 
                 <div class="p-4 md:w-1/2">
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <div class="p-6">
-                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">ACCOUNT HEALTH STATUS</h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-6">Mandatory Checklist to keep your account active</h1>
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">ACCOUNT HEALTH
+                                STATUS</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-6">Mandatory Checklist to keep
+                                your account active</h1>
                             <div class="flex-wrap w-full">
                                 <div class="flex relative pb-12">
                                     <div class="h-full w-10 absolute inset-0 flex items-center justify-center">

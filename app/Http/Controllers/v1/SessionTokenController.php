@@ -73,7 +73,8 @@ class SessionTokenController extends Controller
                 $message .= '"When you are uncertain, pause and wait for clarity to come before making any decision." *Daaji*';
                 $message .= '%0a';
                 $message .= '%0a';
-                $message .= '--- Send this message to get Login ---%0a';
+                $message .= '☑️Send this message as it is to continue Login process%0a';
+                $message .= '⚠️Do not send your queries on this number%0a';
 
                 $response = [
                     "success" => true,
