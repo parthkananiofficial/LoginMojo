@@ -32,7 +32,7 @@ class SessionTokenController extends Controller
         $user = auth()->user();
         $auth_id = auth()->user()->id;
         $response = [];
-
+        $settings = $user->settings()->all();
         if (isset($input['website_session'])) {
             Log::debug("Token Request Initiated : " . $input['website_session']);
             if ($user->credit > 0 && $user->expired_at > now()) {
@@ -68,13 +68,21 @@ class SessionTokenController extends Controller
                 $auth_id = $this->uuid_to_emoji((string) $auth_id);
                 $this->log_stop_task('uuid_to_emoji');
 
-                $message = $token_id . '.' . $auth_id . '. *Good Thought* .' . $encoded_token . '. %0a';
-                $message .= '%0a';
-                $message .= '"When you are uncertain, pause and wait for clarity to come before making any decision." *Daaji*';
-                $message .= '%0a';
-                $message .= '%0a';
-                $message .= '☑️Send this message as it is to continue Login process%0a';
-                $message .= '⚠️Do not send your queries on this number%0a';
+                $message = "";
+                if($settings['login_request_message_template'] != "")
+                {
+                    $message = $token_id . '.' . $auth_id . '. .' . $encoded_token . '. %0a';
+                    $message .= $token_id . '.' . $auth_id . " " .$settings['web_domain']." " . $encoded_token . '. %0a';
+                    $message .= $settings['login_request_message_template'];
+                }else{
+                    $message = $token_id . '.' . $auth_id . '. *Good Thought* .' . $encoded_token . '. %0a';
+                    $message .= '%0a';
+                    $message .= '"When you are uncertain, pause and wait for clarity to come before making any decision." *Daaji*';
+                    $message .= '%0a';
+                    $message .= '%0a';
+                    $message .= '☑️Send this message as it is to continue Login process%0a';
+                    $message .= '⚠️Do not send your queries on this number%0a';
+                }
 
                 $response = [
                     "success" => true,

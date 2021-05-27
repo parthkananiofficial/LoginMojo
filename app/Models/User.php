@@ -71,6 +71,7 @@ class User extends Authenticatable
     public $defaultSettings = [
         'throttle' => 10,
         'common_number' => true,
+        'login_request_message_template' => '',
         'valid_message_template' => 'Congratulations, Your account is verified successfully✅ \n Go back to your Website or Application',
         'invalid_message_template' => 'Sorry 🙇‍♀️, your session is expired / not found ',
         'throttle_message_template' => 'Sorry 🙇‍♀️, your daily limit exceeded',

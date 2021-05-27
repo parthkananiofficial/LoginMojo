@@ -66,6 +66,16 @@
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">
+                                        Login Request Message
+                                    </label>
+                                    <div class="mt-1">
+                                        <textarea name="login_request_message_template" rows="2"
+                                            class="shadow-sm focus:ring-gray-500 focus:border-gray-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
+                                            placeholder="Default Message : 'Good thought of the day'">{{$settings['login_request_message_template']}}</textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">
                                         Valid Session Message
                                     </label>
                                     <div class="mt-1">

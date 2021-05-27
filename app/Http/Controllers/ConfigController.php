@@ -30,6 +30,7 @@ class ConfigController extends Controller
         $user->settings()->setMultiple([
             'common_number' => true,//$input['common_number'],
             'throttle' => $input['throttle'],
+            'login_request_message_template' => $input['login_request_message_template'],
             'valid_message_template' => $input['valid_message_template'],
             'invalid_message_template' => $input['invalid_message_template'],
             'throttle_message_template' => $input['throttle_message_template'],
@@ -38,6 +39,10 @@ class ConfigController extends Controller
             'app_package_name' => $input['app_package_name'],
         ]);
 
+        if($input['login_request_message_template'] == "")
+        {
+            $user->settings()->delete('login_request_message_template');
+        }
         if($input['valid_message_template'] == "")
         {
             $user->settings()->delete('valid_message_template');
