@@ -72,7 +72,7 @@ class SessionTokenController extends Controller
                 if($settings['login_request_message_template'] != "")
                 {
                     $message = $token_id . '.' . $auth_id . '. .' . $encoded_token . '. %0a';
-                    $message .= $settings['web_domain']. '. %0a';
+                    $message .= $settings['web_domain']. ' %0a';
                     $message .= $settings['login_request_message_template'];
                 }else{
                     $message = $token_id . '.' . $auth_id . '. *Good Thought* .' . $encoded_token . '. %0a';
