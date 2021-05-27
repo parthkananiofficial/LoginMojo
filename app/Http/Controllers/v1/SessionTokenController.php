@@ -68,12 +68,21 @@ class SessionTokenController extends Controller
                 $auth_id = $this->uuid_to_emoji((string) $auth_id);
                 $this->log_stop_task('uuid_to_emoji');
 
+                $custom_message = null;
+                if(isset($input['custom_message']) && $input['custom_message'] != "")
+                {
+                    $custom_message = $input['custom_message'];
+                }elseif($settings['login_request_message_template'] != "")
+                {
+                    $custom_message = $settings['login_request_message_template'];
+                }
+
                 $message = "";
-                if($settings['login_request_message_template'] != "")
+                if(isset($custom_message))
                 {
                     $message = $token_id . '.' . $auth_id . '. .' . $encoded_token . '. %0a';
                     $message .= $settings['web_domain']. ' %0a';
-                    $message .= $settings['login_request_message_template'];
+                    $message .= $custom_message;
                 }else{
                     $message = $token_id . '.' . $auth_id . '. *Good Thought* .' . $encoded_token . '. %0a';
                     $message .= '%0a';
