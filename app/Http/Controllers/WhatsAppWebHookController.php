@@ -23,11 +23,14 @@ class WhatsAppWebHookController extends Controller
 
             if (isset($response['success']) && $response['success']) {
                 //if it's success then we will call the customer's webhook
-                $this->call_user_webhook($response['user'], $response['sesssionToken'],$response['reply']);
-            }
 
-            // if (isset($response['reply']))
-            //     $this->send_message($mobile, $response["reply"], "LOGIN");
+                if($response['success'])
+                {
+                    $this->call_user_webhook($response['user'], $response['sesssionToken'],$response['reply']);
+                }else{
+                    $this->send_message($mobile, $response["reply"], "LOGIN");
+                }
+            }
         }
         return response()->json(['success' => 'success'], 200);
     }
