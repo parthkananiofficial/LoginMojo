@@ -86,10 +86,10 @@ class SessionTokenController extends Controller
                 }else{
                     $message = $token_id . '.' . $auth_id . '. *Good Thought* .' . $encoded_token . '. %0a';
                     $message .= '%0a';
-                    $message .= '"When you are uncertain, pause and wait for clarity to come before making any decision." *Daaji*';
+                    $message .= '"An investment in knowledge pays the best interest" *Warren Buffet*';
                     $message .= '%0a';
                     $message .= '%0a';
-                    $message .= '☑️Send this message as it is to continue Login process%0a';
+                    $message .= '☑️Send this message to *continue your alphanest log-in process* %0a';
                     $message .= '⚠️Do not send your queries on this number%0a';
                 }
 

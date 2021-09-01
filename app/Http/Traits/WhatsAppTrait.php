@@ -245,22 +245,30 @@ trait WhatsAppTrait
         }
 
         Log::debug("Sending " . $type . " Message to " . $mobile . " Message : " . $message);
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://live-server-1497.wati.io/api/v1/sendSessionMessage/' . $mobile . '?messageText=' . urlencode($message));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, 1);
+        $curl = curl_init();
 
-        $headers = array();
-        $headers[] = 'Accept: */*';
-        $headers[] = 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkMmQ5OWIwMC1hZjRhLTQ1MjEtODg1OC02M2U0MjIxOTRhMzIiLCJ1bmlxdWVfbmFtZSI6InBhcnRoLmthbmFuaUB2ZXJzaW9uaGFzaC5jb20iLCJuYW1laWQiOiJwYXJ0aC5rYW5hbmlAdmVyc2lvbmhhc2guY29tIiwiZW1haWwiOiJwYXJ0aC5rYW5hbmlAdmVyc2lvbmhhc2guY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQVRPUiIsImV4cCI6MjUzNDAyMzAwODAwLCJpc3MiOiJDbGFyZV9BSSIsImF1ZCI6IkNsYXJlX0FJIn0.uIPtQmw-a5GKrn5utc_VU2arYI5G0zfCMp3nJaOcVxA';
-        $headers[] = 'Content-Type: application/x-www-form-urlencoded';
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt_array($curl, array(
+        //CURLOPT_URL => 'https://live-server-2398.wati.io/api/v1/sendSessionMessage/' . $mobile,
+        CURLOPT_URL => 'https://live-server-1497.wati.io/api/v1/sendSessionMessage/' . $mobile,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array('messageText' => $message),
+        CURLOPT_HTTPHEADER => array(
+            //'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyODg1NjY3ZC0xZjAxLTQ3YzEtOWRlZS1mZWE3ZGY1ZGJjNTciLCJ1bmlxdWVfbmFtZSI6ImZiQG5hcm5vbGlhLmNvbSIsIm5hbWVpZCI6ImZiQG5hcm5vbGlhLmNvbSIsImVtYWlsIjoiZmJAbmFybm9saWEuY29tIiwiYXV0aF90aW1lIjoiMDcvMzAvMjAyMSAwOTozNTo1NCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFETUlOSVNUUkFUT1IiLCJleHAiOjI1MzQwMjMwMDgwMCwiaXNzIjoiQ2xhcmVfQUkiLCJhdWQiOiJDbGFyZV9BSSJ9.kRVdMlYsnFZlxTIRNx2NfXhHvVksUmLf86M96HXcR88',
+            'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkMmQ5OWIwMC1hZjRhLTQ1MjEtODg1OC02M2U0MjIxOTRhMzIiLCJ1bmlxdWVfbmFtZSI6InBhcnRoLmthbmFuaUB2ZXJzaW9uaGFzaC5jb20iLCJuYW1laWQiOiJwYXJ0aC5rYW5hbmlAdmVyc2lvbmhhc2guY29tIiwiZW1haWwiOiJwYXJ0aC5rYW5hbmlAdmVyc2lvbmhhc2guY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQVRPUiIsImV4cCI6MjUzNDAyMzAwODAwLCJpc3MiOiJDbGFyZV9BSSIsImF1ZCI6IkNsYXJlX0FJIn0.uIPtQmw-a5GKrn5utc_VU2arYI5G0zfCMp3nJaOcVxA'
+        ),
+        ));
 
-        $result = curl_exec($ch);
-        if (curl_errno($ch)) {
-            Log::debug(" ERROR : " . curl_error($ch));
+        $result = curl_exec($curl);
+        if (curl_errno($curl)) {
+            Log::debug(" ERROR : " . curl_error($curl));
         }
-        curl_close($ch);
+        curl_close($curl);
         Log::debug("RESPONSE : " . $result);
     }
 
